@@ -1,0 +1,668 @@
+/*CSS SST MARIANA*/
+/*-------------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+#SST-container {
+    text-align: center;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-bottom: 30px;
+    font-family: 'Roboto Condensed';
+}
+
+
+#SST-first-section {
+    background: white;
+}
+
+
+
+
+#SST-p-first-section-welcome {
+    font-weight: bold;
+    font-size: 18px;
+    padding-bottom: 30px;
+}
+
+
+#SST-p-banner {
+    color: #ffff;
+    font-size: 16px;
+    font-family: 'Roboto Condensed';
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 15px;
+    font-weight: 300;
+}
+
+#SST-background-banner {
+    background-image: url(https://mariana304.github.io/security_and_health_at_work_/IMG/sst-fondo1.png);
+}
+
+#container-img-text-banner {
+    display: flex;
+}
+
+#SST-img-banner-welcome {
+    margin-left: 10px;
+    width: 180px;
+}
+
+#SST-container-text-banner-welcome {
+    margin-right: 10px;
+}
+
+#SST-title-banner-welcome {
+    color: #fff;
+    text-align: center;
+    font-size: 25px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+
+#SST-title-welcome {
+    color: #007B99;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: -5px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-top: 28px;
+    padding-bottom: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
+    box-shadow: -1px 7px 11.2px 0px rgb(243, 243, 243);
+    font-family: 'Roboto Condensed';
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+
+#SST-title-welcome-movil {
+    display: none;
+}
+
+#SST-text-first-section {
+
+    margin-top: 15px;
+    margin-left: 30px;
+    margin-right: 30px;
+    color: #000000;
+    font-family: 'Roboto Condensed';
+    font-weight: 300;
+    font-size: 15.5px;
+
+}
+
+#SST-second-section {
+    margin-top: 60px;
+}
+
+#SST-icon-video-second-section {
+    font-size: 25px;
+    margin-right: 3px;
+}
+
+#SST-video-second-section {
+    width: 100%;
+}
+
+
+
+#SST-container-title-second-section {
+    display: flex;
+    justify-content: center;
+}
+
+#SST-p-second-section {
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Roboto Condensed';
+}
+
+#SST-third-section {
+    background-color: #ffff;
+    padding-bottom: 30px;
+}
+
+#SST-title-third-section {
+    color: #007B99;
+    font-weight: 700;
+    font-size: 24px;
+    margin-top: -5px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-bottom: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: -1px 7px 11.2px 0px rgb(243, 243, 243);
+    font-family: 'Roboto Condensed';
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 30px;
+}
+
+#SST-container-third-section {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#SST-title-p-third-section {
+    color: #000000;
+    font-family: 'Roboto Condensed';
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#SST-container-title-one {
+    display: flex;
+    justify-content: center;
+}
+
+#SST-container-title-two {
+    display: flex;
+    justify-content: center;
+}
+
+#SST-container-title-third {
+    display: flex;
+    justify-content: center;
+}
+
+
+#SST-icon-title-third {
+    font-size: 25px;
+    margin-right: 12px;
+}
+
+
+#SST-icon-title-two {
+    font-size: 25px;
+    margin-right: 12px;
+}
+
+
+#SST-icon-title-one {
+    font-size: 25px;
+    margin-right: 12px;
+}
+
+#SST-text-third-section {
+    color: #000000;
+    font-family: 'Roboto Condensed';
+    font-weight: 300;
+    font-size: 16px;
+}
+
+#SST-banner-fourth-section {
+    background-image: url(https://mariana304.github.io/security_and_health_at_work_/IMG/sst-fondo1.png);
+    display: flex;
+    position: relative;
+}
+
+#SST-container-p-fourth-section {
+    text-align: left;
+}
+
+#SST-first-p-fourth-section {
+    color: #ffff;
+    font-size: 18px;
+    font-family: 'Roboto Condensed';
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 55px;
+    font-weight: 300;
+}
+
+#SST-computer-character {
+    display: block;
+}
+
+
+#SST-character-thinking {
+    margin-top: 20px;
+}
+
+
+
+
+#SST-second-p-fourth-section {
+    font-weight: bold !important;
+    color: #ffff;
+    font-size: 18px;
+    font-family: 'Roboto Condensed';
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 55px;
+}
+
+
+#SST-container-routes {
+    display: flex;
+    padding-right: 20px;
+    padding-left: 20px;
+    background-color: #ffff;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#SST-container-first-route {
+    text-align: left;
+    margin-top: 20px;
+}
+
+#SST-container-third-route {
+    text-align: left;
+    margin-top: 20px;
+}
+
+#SST-certified-character {
+    display: block;
+}
+
+#SST-container-two-route {
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+
+#SST-container-third-route {
+    display: block;
+}
+
+#SST-title-route-one {
+    margin-top: 35px;
+    color: #000000;
+    font-size: 24px;
+    font-family: 'Roboto Condensed';
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+#SST-p-first-route {
+    color: #000000;
+    font-size: 16px;
+    font-family: 'Roboto Condensed';
+    margin-right: 15px;
+    margin-left: 15px;
+    font-weight: 300;
+}
+
+#SST-container-buttom-routes {
+    margin-top: 70px;
+}
+
+#SST-buttom-routes {
+    text-decoration: none;
+    color: #ffff;
+    font-weight: bold;
+    font-size: 24px;
+    background-color: #007B99;
+    font-family: 'Roboto Condensed';
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 30px;
+    margin-left: 10px;
+}
+
+#SST-title-route-two {
+    color: #000000;
+    font-size: 24px;
+    font-family: 'Roboto Condensed';
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 50px;
+    font-weight: bold;
+    margin-left: 70px;
+}
+
+#SST-container-third-route {
+    display: flex;
+    padding-right: 70px;
+    padding-left: 150px;
+    margin-top: 10px;
+    background-color: #ffff;
+}
+
+
+#SST-second-p-banner-movile {
+
+    color: #ffff;
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+
+#SST-third-p-banner-movile {
+    color: #ffff;
+    font-size: 30px;
+    font-weight: lighter;
+    padding-bottom: 80px;
+}
+
+
+
+@media(max-width: 1740px) {
+    #SST-container {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    #SST-text-first-section {
+        margin-top: 20px;
+        margin-left: 120px;
+        margin-right: 120px;
+    }
+
+}
+
+@media(max-width: 1540px) {
+    #SST-container {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    #SST-text-first-section {
+        margin-top: 20px;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+}
+
+@media(max-width: 1260px) {
+    #SST-container {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    #SST-text-first-section {
+        margin-top: 20px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+
+    #SST-title-welcome {
+        font-size: 20px;
+        margin-left: 120px;
+        margin-right: 120px;
+    }
+
+    #SST-container-third-section {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+}
+
+
+
+@media(max-width: 1225px) {
+
+    #SST-container {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    #SST-p-first-section-welcome {
+
+        padding-bottom: 0px;
+    }
+
+
+    #SST-title-welcome {
+        color: #007B99;
+        font-weight: bold;
+        font-size: 20px;
+        margin-top: -55px;
+        margin-left: 100px;
+        margin-right: 100px;
+        padding-top: 28px;
+        padding-bottom: 30px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        box-shadow: 0px 10px 10px -9px rgb(170, 169, 169);
+        font-family: 'Roboto Condensed';
+        padding-left: 25px;
+        padding-right: 25px;
+        background: #fff;
+    }
+
+
+
+    #SST-text-first-section {
+        margin-top: 20px;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
+    #SST-title-welcome {
+        font-size: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+
+
+    #SST-third-p-banner-movile {
+        padding-bottom: 120px;
+    }
+
+
+    #SST-second-p-banner-movile {
+        color: #ffff;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+
+
+
+
+    #SST-third-section {
+        background-color: #ffff;
+        padding-bottom: 30px;
+    }
+
+    #SST-title-third-section {
+        font-size: 24px;
+        margin-top: -5px;
+        margin-left: 10px;
+        margin-right: 10px;
+
+    }
+
+    #SST-container-two-route {
+        text-align: center;
+        margin-left: 10px;
+
+    }
+
+
+    #SST-container-third-section {
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
+    #SST-title-p-third-section {
+        color: #000000;
+        font-family: 'Roboto Condensed';
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    #SST-text-third-section {
+        color: #000000;
+        font-family: 'Roboto Condensed';
+        font-weight: 300;
+        font-size: 16px;
+    }
+
+
+    #SST-container-p-fourth-section {
+        text-align: center;
+
+    }
+
+    #SST-img-banner-second {
+        display: none;
+    }
+
+
+    #SST-banner-fourth-section {
+        padding-left: 0px;
+    }
+
+    #SST-first-p-fourth-section {
+        color: #ffff;
+        font-size: 18px;
+        font-family: 'Roboto Condensed';
+        margin-right: 15px;
+        margin-left: 15px;
+        margin-top: 40px;
+        font-weight: 300;
+    }
+
+    #SST-second-p-fourth-section {
+        margin-bottom: 40px;
+    }
+
+    #SST-container-routes {
+        display: block;
+        padding-right: 10px;
+        padding-left: 10px;
+        background-color: #ffff;
+        align-items: center;
+        padding-bottom: 25px;
+    }
+
+    #SST-container-first-route {
+        text-align: center;
+    }
+
+    #SST-character-thinking {
+        margin-top: 20px;
+        padding-top: 30px;
+    }
+
+    #SST-container-buttom-routes {
+        margin-top: 35px;
+    }
+
+    #SST-container-third-route {
+        display: block;
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-top: 10px;
+        background-color: #ffff;
+        text-align: center;
+    }
+
+}
+
+@media(max-width: 625px) {
+    #SST-container {
+        margin-left: 0px;
+
+    }
+
+    #SST-title-welcome {
+        display: none;
+    }
+
+    #SST-title-welcome-movil {
+        display: block;
+        color: #007B99;
+        font-weight: 700;
+        font-size: 18px;
+        margin-top: -55px;
+        margin-left: 15px;
+        margin-right: 15px;
+        padding-top: 28px;
+        padding-bottom: 30px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        box-shadow: 0 10px 10px -9px rgb(170, 169, 169);
+        font-family: 'Roboto Condensed';
+        padding-left: 15px;
+        padding-right: 15px;
+        background: #fff;
+    }
+
+    #SST-text-first-section {
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-top: 0px;
+    }
+
+
+    #SST-third-p-banner-movile {
+        padding-bottom: 90px;
+        font-size: 25px;
+    }
+
+    #SST-title-third-section {
+        font-size: 20px;
+
+    }
+
+
+    #SST-title-p-third-section {
+        font-size: 17px;
+    }
+
+    #SST-p-first-section-welcome {
+        font-size: 16px;
+
+    }
+
+    #SST-text-first-section {
+        line-height: 23px;
+    }
+
+    #SST-text-third-section {
+        line-height: 23px;
+    }
+
+
+    #SST-second-p-fourth-section {
+        margin-top: 15px;
+    }
+
+    #SST-icon-title-third {
+        margin-right: 6px;
+    }
+
+    #SST-icon-title-two {
+        margin-right: 6px;
+    }
+
+    #SST-icon-title-one {
+        margin-right: 6px;
+    }
+
+
+    #SST-title-route-one {
+        font-size: 20px;
+    }
+
+
+    #SST-p-first-route {
+        line-height: 23px;
+    }
+
+    #SST-buttom-routes {
+        font-size: 20px;
+    }
+
+
+}
