@@ -1,151 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap">
+
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body>
-
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-        <script src="https://cdn.tailwindcss.com"></script>
-    </head>
-
-    <body>
-
-       
-        <div class="group relative p-4 border border-gray-300 rounded-lg">
-            <div class="absolute left-0 top-0 h-full w-1 bg-blue-500 transition-all duration-300 group-hover:w-8 group-hover:bg-blue-600 flex items-center justify-center">
-                <span class="opacity-0 group-hover:opacity-100 text-white text-sm font-bold transition-opacity duration-300">10%</span>
-            </div>
-            <div class="ml-8">
-                <!-- Aquí va el contenido de tu card -->
-                <h3 class="text-lg font-semibold">Título de la Card</h3>
-                <p class="text-gray-600">Descripción de la card.</p>
+    <div class="relative bg-[#FFFFFF] border-l-[5.8px] border-[#0C9B00] w-full grow grid rounded text-stone-400 font-bold text-sm px-3 py-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1)] overflow-hidden group">
+        <div class="absolute top-0 left-0 h-full bg-[#0C9B00] w-0 group-hover:w-[90px] transition-all duration-300 overflow-hidden">
+            <div class="flex flex-col items-center justify-center h-full w-[90px] text-white text-xs font-medium">
+                <div>10%</div>
+                <div>ponderación</div>
             </div>
         </div>
-
-        <div class="group relative bg-white border-l-[5.8px] border-[#0C9B00] w-full rounded text-stone-400 font-bold text-sm px-3 py-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1)]">
-            <div class="flex items-center">
-
-
-                <div class="relative h-full transition-all duration-300 group-hover:w-20 group-hover:bg-[#0C9B00] ">
-                    <div class="absolute left-0 top-0 h-full bg-[#0C9B00] hover:bg-[#0C9B00] transition-all duration-300 w-1 group-hover:w-20 flex items-center justify-center group-hover:bg-[#0C9B00]">
-                        <span class="opacity-0 group-hover:opacity-100 text-white text-sm font-bold transition-opacity duration-300 bg-[#0C9B00]">10%</span>
+        <div class="flex grid sm:grid-flow-col sm:grid-cols-12 pl-[5.8px] group-hover:pl-[90px] transition-all duration-300">
+            <!-- Nombre de la actividad -->
+            <div class="grid col-span-9 sm:col-span-5">
+                <div class="flex items-center">
+                    <div class="mr-0 md:mr-2">
+                        <i class="fa-solid fa-user-check text-[22px] mr-1 text-center text-[#2C2C2C] hidden md:block"></i>
+                    </div>
+                    <div class="text-[#2C2C2C] text-sm md:text-base font-medium mr-1">
+                        Taller de la Unidad 1
+                        <span class="block font-normal text-xs text-[#6D6F6D]">
+                            Ya recibiste feedback
+                        </span>
                     </div>
                 </div>
-
-
-
-                <div class="ml-4 flex-grow">
-                    <!-- Contenido de la card -->
-                    <div class="grid sm:grid-flow-col sm:grid-cols-12 gap-4">
-                        <!-- Nombre de la actividad -->
-                        <div class="col-span-9 sm:col-span-5">
-                            <div class="flex items-center">
-                                <div class="mr-2">
-                                    <i class="fa-solid fa-user-check text-[22px] text-[#2C2C2C] hidden md:block"></i>
-                                </div>
-                                <div class="text-[#2C2C2C] text-sm md:text-base font-medium">
-                                    Taller de la Unidad 1
-                                    <span class="block font-normal text-xs text-[#6D6F6D]">
-                                        Ya recibiste feedback
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <!-- Ponderacion Movil -->
-                        <div class="col-span-3 md:col-span-1 items-center justify-end sm:hidden">
-                            <div class="rounded-full border-2 w-[24px] text-center">
-                                10
-                            </div>
-                        </div>
-        
-                        <!-- Fechas -->
-                        <div class="col-span-6 sm:col-span-4 mt-1 sm:mt-0 items-center text-[#545454]">
-                            <p class="text-[#818181] text-xs md:text-sm font-normal">Completada el <span class="text-sm md:text-base font-normal text-[#404040]">15 de marzo de 2024</span></p>
-                        </div>
-        
-                        <!-- Calificación o Estado -->
-                        <div class="col-span-6 sm:col-span-2 mt-1 sm:mt-0 text-center items-center justify-end sm:justify-center">
-                            <div class="text-[#2C2C2C] md:text-lg text-base font-medium">
-                                5,0 <i class="fa-regular fa-circle-check text-[#0C9B00]"></i>
-                            </div>
-                        </div>
-        
-                        <!-- Ponderación -->
-                        <div class="col-span-12 sm:col-span-1 items-center sm:justify-end justify-center">
-                            <div class="justify-center pt-[6px] text-center border-2 rounded-full text-xs w-8 h-8 hidden sm:block">
-                                10%
-                            </div>
-                        </div>
-                    </div>
+            </div>
+    
+            <!-- Ponderacion Movil -->
+            <div class="grid col-span-3 md:col-span-1 items-center justify-end sm:hidden">
+                <div class="rounded-full border border-2 w-[24px]">
+                    10
+                </div>
+            </div>
+    
+            <!-- Fechas -->
+            <div class="grid col-span-6 sm:col-span-4 mt-1 sm:mt-0 items-center text-545454">
+                <p class="text-[#818181] text-xs md:text-sm font-normal">Completada el <span
+                        class="text-sm md:text-base font-normal text-[#404040]">15 de marzo de
+                        2024</span></p>
+            </div>
+    
+            <!-- Calificación o Estado-->
+            <div class="grid col-span-6 sm:col-span-2 mt-1 sm:mt-0 text-center items-center justify-end sm:justify-center">
+                <div class="text-[#2C2C2C] md:text-lg text-base font-medium">
+                    5,0 <i class="fa-regular fa-circle-check text-[#0C9B00]"></i>
+                </div>
+            </div>
+    
+            <!-- Ponderación -->
+            <div class="grid col-span-12 sm:col-span-1 items-center sm:justify-end justify-center">
+                <div class="justify-center pt-[6px] text-center border border-2 rounded-full text-xs w-8 h-8 hidden sm:block">
+                    10%
                 </div>
             </div>
         </div>
-
-        <div class="group relative bg-[#FFFFFF] border-l-[5.8px] border-[#0C9B00] w-full grow grid rounded text-stone-400 font-bold text-sm px-3 py-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1)]">
-            <div class="flex grid sm:grid-flow-col sm:grid-cols-12">
-                <!-- Nombre de la actividad -->
-                <div class="grid col-span-9 sm:col-span-5">
-                    <div class="flex items-center">
-                        <div class="mr-0 md:mr-2">
-                            <i class="fa-solid fa-user-check text-[22px] mr-1 text-center text-[#2C2C2C] hidden md:block"></i>
-                        </div>
-                        <div class="text-[#2C2C2C] text-sm md:text-base font-medium mr-1">
-                            Taller de la Unidad 1
-                            <span class="block font-normal text-xs text-[#6D6F6D]">Ya recibiste feedback</span>
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- Ponderacion Movil -->
-                <div class="grid col-span-3 md:col-span-1 items-center justify-end sm:hidden">
-                    <div class="rounded-full border border-2 w-[24px]">10</div>
-                </div>
-        
-                <!-- Fechas -->
-                <div class="grid col-span-6 sm:col-span-4 mt-1 sm:mt-0 items-center text-545454">
-                    <p class="text-[#818181] text-xs md:text-sm font-normal">Completada el <span class="text-sm md:text-base font-normal text-[#404040]">15 de marzo de 2024</span></p>
-                </div>
-        
-                <!-- Calificación o Estado -->
-                <div class="grid col-span-6 sm:col-span-2 mt-1 sm:mt-0 text-center items-center justify-end sm:justify-center">
-                    <div class="text-[#2C2C2C] md:text-lg text-base font-medium">
-                        5,0 <i class="fa-regular fa-circle-check text-[#0C9B00]"></i>
-                    </div>
-                </div>
-        
-                <!-- Ponderación -->
-                <div class="grid col-span-12 sm:col-span-1 items-center sm:justify-end justify-center">
-                    <div class="justify-center pt-[6px] text-center border border-2 rounded-full text-xs w-8 h-8 hidden sm:block">
-                        10%
-                    </div>
-                </div>
-            </div>
-            <div class="absolute top-0 left-0 h-full w-0 bg-[#0C9B00] transition-all duration-300 ease-in-out group-hover:w-full flex items-center justify-center text-white font-bold text-lg">
-                10%
-            </div>
-        </div>
-        
+    </div>
+    
+    
+    
+    
 
 
     
-          
-        
-        
-    </body>
-    </html>
 </body>
-
 </html>
