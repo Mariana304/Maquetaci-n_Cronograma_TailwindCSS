@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap">
+</head>
+
+<style>
+    .diaryContainer {
+        /* top | right | bottom | left */
+        padding: 0.75rem 0.5rem 0.75rem 0.5rem;
+        margin-top: 0.75rem;
+        background: #F9F9F9;
+    }
+
+    .container__section {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+
+    .section__unit {
+        display: grid;
+        grid-column: span 3 / span 3;
+        place-content: center;
+        border-radius: 0.25rem;
+        height: auto;
+        font-weight: 600;
+        text-align: center;
+        background: #328094;
+        color: #FFFFFF;
+    }
+
+    .section__unit--title {
+        margin-left: 8px;
+        margin-right: 8px;
+        font-size: 22px;
+    }
+
+    .section__unit--fecha {
+        margin-left: 8px;
+        margin-right: 8px;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        padding-top: 10px;
+        display: block;
+    }
+
+    .section__activity {
+        display: flex;
+        margin-left: 0.75rem;
+        flex-wrap: wrap;
+        grid-column: span 9 / span 9;
+        row-gap: 0.75rem;
+        width: 100%;
+    }
+
+    .diaryActivity {
+        display: grid;
+        overflow: hidden;
+        /* top | right | bottom | left */
+        padding: 0.25rem 0.75rem 0.25rem 0.75rem;
+        margin-right: 0.75rem;
+        border-radius: 0.25rem;
+        width: 100%;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        font-weight: 700;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 3px -1px rgba(97, 97, 97, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        cursor: pointer;
+        min-height: 55px;
+    }
+
+
+
+    .diaryActivity-info {
+        padding: 16px;
+        background-color: #fafafa;
+        border-top: 1px solid #ddd;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s ease-out;
+        border: solid red 1px;
+        display: none;
+    }
+
+    .diaryActivity.active .diaryActivity-info {
+        height: auto;
+        display: block;
+    }
+
+
+
+
+
+
+    .activity--qualified {
+        border-left: solid #50B447 5.8px;
+        position: relative;
+    }
+
+    .activity--pending {
+        border-left: solid #E09523 5.8px;
+        position: relative;
+    }
+
+    .activity--retarded {
+        border-left: solid #D04961 5.8px;
+        position: relative;
+    }
+
+    .activity__content {
+        display: flex;
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        transition: padding-left 0.5s ease;
+        padding-left: 10px;
+
+    }
+
+
+    @media (min-width: 1024px) {
+
+        
+        .diaryContainer {
+            background-color: #922f71;
+        }
+
+        .activity--qualified:hover .activity__content,
+        .activity--pending:hover .activity__content,
+        .activity--retarded:hover .activity__content {
+            padding-left: 70px;
+            align-items: center;
+        }
+
+
+
+        .activity__border-text {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            overflow: hidden;
+            height: 100%;
+            text-align: center;
+            color: white;
+            transition: width 0.5s ease, padding 0.5s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        .weighing--qualified {
+            background-color: #50B447;
+        }
+
+        .weighing--pending {
+            background-color: #E09523;
+        }
+
+        .weighing--retarded {
+            background-color: #D04961;
+        }
+
+
+        .activity__border-text span {
+            display: block;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .border__span--text {
+            font-weight: 400;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .border__span--porcent {
+            font-size: 16px;
+        }
+
+
+        .activity--qualified:hover .activity__border-text span,
+        .activity--pending:hover .activity__border-text span,
+        .activity--retarded:hover .activity__border-text span {
+            opacity: 1;
+        }
+
+
+        .activity--qualified:hover .activity__border-text,
+        .activity--pending:hover .activity__border-text,
+        .activity--retarded:hover .activity__border-text {
+            width: 55px;
+            padding-left: 8px;
+            padding-right: 8px;
+
+
+        }
+
+    }
+
+    .activity__content--name {
+        display: grid;
+        grid-column: span 5 / span 5;
+    }
+
+    .activity__name {
+        display: flex;
+        align-items: center;
+    }
+
+    .name__content--icon {
+        margin-right: 0.5rem;
+    }
+
+    .activity__name--icon {
+        margin-right: 0.25rem;
+        text-align: center;
+        font-size: 22px;
+        color: #2C2C2C;
+    }
+
+    .activity__name--text {
+        margin-right: 0.25rem;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        font-weight: 500;
+        color: #2C2C2C;
+    }
+
+    .activity__name--span {
+        display: block;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        font-weight: 400;
+        color: #6D6F6D;
+    }
+
+    .span--retarded {
+        color: #D04961;
+    }
+
+    .activity__content--date {
+        display: flex;
+        grid-column: span 4 / span 4;
+        align-items: center;
+    }
+
+    .date__content--text {
+        font-size: 1rem;
+        line-height: 1.25rem;
+        font-weight: 400;
+        color: #818181;
+    }
+
+    .date__content--span {
+        line-height: 1.5rem;
+        font-weight: 400;
+        color: #404040;
+    }
+
+    .activity__content--state {
+        display: grid;
+        grid-column: span 2 / span 2;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .activity__content--qualification {
+        font-size: 18px;
+        line-height: 1.75rem;
+        font-weight: 500;
+        color: #50B447;
+    }
+
+    .activity__icon--state {
+        color: #50B447;
+    }
+
+
+    .activity__state {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        border-radius: 0.25rem;
+        width: 6rem;
+        font-weight: 400;
+        padding-top: 2px;
+        padding-bottom: 2px;
+
+    }
+
+    .state--pending {
+        border: solid 1px #FFD89E;
+        color: #E09523;
+        background: #FFF6E8;
+    }
+
+    .state--retarded {
+        border: solid 1px #FFC4CD;
+        color: #D04961;
+        background: #FFF0F3;
+    }
+
+    .activity__weighting--mobile {
+        display: grid;
+        grid-column: span 3 / span 3;
+        align-items: center;
+        justify-content: end;
+        display: none;
+        /* top | right | bottom | left */
+        padding: 0.75rem 0.75rem 0.75rem 0.75rem;
+    }
+
+
+    @media (max-width: 1024px) {
+
+        .section__unit {
+            grid-column: span 12 / span 12;
+        }
+
+        .section__activity {
+            margin-top: 20px;
+            grid-column: span 12 / span 12;
+        }
+
+        .diaryContainer {
+            background-color: #50B447;
+        }
+
+        .diaryActivity {
+            margin-right: 0rem;
+        }
+
+        .section__activity {
+            margin-left: 0rem;
+        }
+
+        .border__span--text,
+        .border__span--porcent {
+            display: none;
+        }
+
+    }
+
+
+    @media (max-width: 768px) {
+        .diaryContainer {
+            background-color: #5f47b4;
+        }
+
+        .activity__name--text {
+            font-size: 15px;
+            line-height: 1rem;
+        }
+
+        .date__content--span {
+            font-size: 14px;
+            line-height: 1rem;
+        }
+
+        .date__content--text {
+            font-size: 14px;
+            line-height: 1.25rem;
+        }
+
+
+
+        .activity__content {
+            padding-left: 0px;
+        }
+
+        .activity__weighting--mobile {
+            display: block;
+            text-align: right;
+        }
+
+        .activity__content--name {
+            grid-column: span 9 / span 9;
+
+        }
+
+        .activity__content--date {
+            grid-column: span 8 / span 8;
+
+        }
+
+        .activity__content--state {
+            grid-column: span 4 / span 4;
+
+            justify-content: end;
+            margin: 0px;
+        }
+
+        .activity__content--date {
+            margin-right: 0px;
+        }
+
+    }
+
+    @media (max-width: 640px) {
+
+        .activity__icon--state,
+        .activity__name--icon {
+            display: none;
+        }
+
+        .diaryContainer {
+            background-color: #dbacd5;
+        }
+
+        .diaryActivity {
+            /* top | right | bottom | left */
+            padding: 0.75rem 0.75rem 0.75rem 0.75rem;
+        }
+
+    }
+</style>
+
+<body style="font-family:Roboto Condensed ;">
+
+    <div class="diaryContainer">
+
+        <section class="container__section">
+
+            <div class="section__unit">
+                <p class="section__unit--title">Unidad #1 Antecedentes Históricos <span
+                        class="section__unit--fecha">Disponible a partir de 29 de enero</span></p>
+            </div>
+            <div class="section__activity">
+
+                <!-- Activity #1 -->
+                <div class="diaryActivity activity--qualified" onclick="toggleInfo(event, this)">
+
+                    <div class="activity__border-text weighing--qualified">
+                        <span class="border__span--porcent">10%</span>
+                        <span class="border__span--text">ponderado</span>
+                    </div>
+
+                    <div class="activity__content">
+
+                        <!-- Nombre de la actividad -->
+                        <div class="activity__content--name">
+
+
+                            <div class="activity__name">
+
+                                <div class="name__content--icon">
+                                    <i
+                                        class="fa-regular fa-circle-check activity__icon--state activity__name--icon"></i>
+                                </div>
+
+                                <div class="activity__name--text">
+                                    Taller de la Unidad 1
+                                    <span class="activity__name--span">
+                                        Ya recibiste feedback
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin Nombre de la actividad -->
+
+
+                        <!-- Ponderacion Movil -->
+                        <div class="activity__weighting--mobile">
+                            <div class="rounded-full border border-2 w-[24px]">
+                                10
+                            </div>
+                        </div>
+                        <!--Fin Ponderacion Movil -->
+
+
+                        <!-- Fechas -->
+                        <div class="activity__content--date">
+                            <span class="date__content--text">Completada el <span class="date__content--span">15 de
+                                    marzo de
+                                    2024</span></span>
+                        </div>
+                        <!-- Fin fechas -->
+
+                        <!-- Calificación o Estado-->
+                        <div class="activity__content--state">
+                            <div class="activity__content--qualification">
+                                5,0 <i class="fa-solid fa-up-right-from-square"></i>
+                            </div>
+                        </div>
+                        <!--Fin Calificación o Estado-->
+
+
+                        <!-- Ponderación -->
+                        <div style="grid-column: span 1 / span 1;justify-content: center;display: flex; align-items: center; "
+                            class="">
+
+                        </div>
+                        <!--Fin Ponderación -->
+                    </div>
+
+                    <div class="diaryActivity-info">
+                        <p>Información adicional que se despliega al hacer clic en la card.</p>
+                    </div>
+                </div>
+
+
+                <!-- Activity #2 -->
+                <div class="diaryActivity activity--pending" onclick="toggleInfo(event, this)">
+
+
+                    <div class="activity__border-text weighing--pending">
+                        <span class="border__span--porcent">10%</span>
+                        <span class="border__span--text">ponderado</span>
+                    </div>
+
+                    <div class="activity__content">
+
+                        <!-- Nombre de la actividad -->
+                        <div class="activity__content--name">
+                            <div class="activity__name">
+                                <div class="name__content--icon">
+                                    <i class="fa-solid fa-user-check activity__name--icon"></i>
+                                </div>
+                                <div class="activity__name--text">
+                                    Sed ut perspiciatis unde miste...
+                                    <span class="block text-sm text-[#6D6F6D]">
+
+                                        <div class="activity__name--span">
+                                            <i class="fa-regular fa-clock"
+                                                style="font-size: 0.875rem;line-height: 1.25rem; color: #E09523;"></i>
+                                            Faltan 7 días
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Fin Nombre de la actividad -->
+
+                        <!-- Ponderacion Movil -->
+                        <div class="activity__weighting--mobile">
+                            <div class="rounded-full border border-2 w-[24px]">
+                                10
+                            </div>
+                        </div>
+                        <!--Fin Ponderacion Movil -->
+
+
+                        <!-- Fechas -->
+                        <div class="activity__content--date">
+                            <span class="date__content--text">Disponible de <span class="date__content--span">septiembre
+                                    2 a noviembre 15</span></span>
+                        </div>
+                        <!-- Fin fechas -->
+
+
+                        <!-- Calificacón o estado  -->
+                        <div class="activity__content--state">
+                            <div>
+                                <div class="activity__state state--pending">
+                                    Pendiente
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ponderación -->
+                        <div class="grid col-span-12 sm:col-span-1 items-center sm:justify-end justify-center">
+                            <!-- <div
+                                class="justify-center pt-[6px] text-center border border-2 rounded-full text-xs w-8 h-8 hidden sm:block">
+                                10%
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="diaryActivity-info">
+                        <p>Información adicional que se despliega al hacer clic en la card.</p>
+                    </div>
+                </div>
+
+
+
+                <!-- Activity #3 -->
+                <div class="diaryActivity activity--retarded" onclick="toggleInfo(event, this)">
+
+                    <div class="activity__border-text weighing--retarded">
+                        <span class="border__span--porcent">10%</span>
+                        <span class="border__span--text">ponderado</span>
+                    </div>
+
+                    <div class="activity__content">
+                        <!-- Nombre de la actividad -->
+                        <div class="activity__content--name">
+                            <div class="activity__name">
+                                <div class="name__content--icon">
+                                    <i class="fa-solid fa-user-check activity__name--icon"></i>
+                                </div>
+                                <div class="activity__name--text">
+                                    Sed ut perspiciatis unde miste...
+                                    <span class="block text-sm text-[#6D6F6D]">
+
+                                        <div class="activity__name--span span--retarded">
+                                            Retrasada 2 días
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Fin Nombre de la actividad -->
+
+                        <!-- Ponderacion Movil -->
+                        <div class="activity__weighting--mobile">
+                            <div class="rounded-full border border-2 w-[24px]">
+                                10
+                            </div>
+                        </div>
+                        <!-- Fin Ponderacion Movil -->
+
+
+                        <!-- Fechas -->
+                        <div class="activity__content--date">
+
+                            <p class="date__content--text">
+                                Venció el <span class="date__content--span">15 de marzo de 2024</span></p>
+                        </div>
+                        <!-- Fin fechas -->
+
+
+                        <!-- Calificacón o estado -->
+                        <div class="activity__content--state">
+                            <div>
+                                <div class="activity__state state--retarded">
+                                    Sin entrega
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ponderación -->
+                        <div class="grid col-span-12 sm:col-span-1 items-center sm:justify-end justify-center">
+                            <div
+                                class="justify-center pt-[6px] text-center border border-2 rounded-full text-xs w-8 h-8 hidden sm:block">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="diaryActivity-info">
+                        <p>Información adicional que se despliega al hacer clic en la card.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <script>
+        function toggleInfo(event, diaryActivity) {
+            const info = diaryActivity.querySelector('.diaryActivity-info');
+            const hoverInfo = diaryActivity.querySelector('.activity__border-text');
+            if (diaryActivity.classList.contains('active')) {
+                diaryActivity.classList.remove('active');
+                info.style.height = '0';
+                hoverInfo.style.display = 'block'; // Muestra el hover-info nuevamente
+            } else {
+                closeAllDiaryActivities(); // Cierra todas las otras diary activities
+                diaryActivity.classList.add('active');
+                info.style.height = info.scrollHeight + 'px';
+                hoverInfo.style.display = 'none'; // Oculta el hover-info
+            }
+            event.stopPropagation(); // Evita que el clic se propague al document
+        }
+
+        function closeAllDiaryActivities() {
+            const allDiaryActivities = document.querySelectorAll('.diaryActivity');
+            allDiaryActivities.forEach(diaryActivity => {
+                const info = diaryActivity.querySelector('.diaryActivity-info');
+                const hoverInfo = diaryActivity.querySelector('.activity__border-text');
+                diaryActivity.classList.remove('no-hover');
+                diaryActivity.classList.remove('active');
+                info.style.height = '0';
+                hoverInfo.style.display = 'block'; // Asegura que el hover-info esté visible
+            });
+        }
+
+        document.addEventListener('click', (event) => {
+            const isClickInsideDiaryActivity = event.target.closest('.diaryActivity');
+            if (!isClickInsideDiaryActivity) {
+                closeAllDiaryActivities();
+            }
+        });
+
+    </script>
+
+</body>
+</html>
