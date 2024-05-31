@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap">
+</head>
+
+<style>
+    .container__header {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        margin-top: 28px;
+        background-color: #FCFCFC;
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.25rem;
+    }
+
+    .header__info--course {
+        display: grid;
+        grid-column: span 9 / span 9;
+        justify-content: left;
+        text-align: left;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+
+    }
+
+
+    .header__info--date {
+        display: grid;
+        grid-column: span 3 / span 3;
+        justify-content: right;
+        background-color: #ffffff;
+        padding: 20px;
+        align-items: center;
+        background-color: #FCFCFC;
+        font-size: 18px;
+        color: #525252;
+        line-height: 10px;
+
+
+    }
+
+    .header__info--progress {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .progress-circle {
+        transform: rotate(180deg);
+        /* Rotar todo el SVG para que empiece desde arriba */
+    }
+
+    #progress-indicator {
+        transition: stroke-dashoffset 0.35s;
+        transform: rotate(90deg);
+        /* Contrarrestar la rotación del SVG */
+        transform-origin: center;
+        stroke-linecap: round;
+        /* Bordes redondeados */
+    }
+
+    .header__info--progress span {
+        position: absolute;
+        font-size: 18px;
+        /* Ajustar el tamaño del texto */
+        font-weight: bold;
+    }
+
+    .header__info--text {
+        line-height: 0.35em;
+        margin-left: 20px;
+        color: #7A7A7A;
+        font-size: 15px;
+    }
+
+    .header__info-courseName {
+        font-weight: bold;
+        color: #476873;
+        font-size: 18px;
+    }
+
+    .header__info--text span,
+    .header__info--date span {
+        font-weight: bold;
+        color: #6D6F6D;
+    }
+</style>
+
+<body style="font-family:Roboto Condensed ;">
+
+
+    <header class="container__header">
+        <div class="header__info--course">
+
+            <div class="header__info--progress">
+                <svg class="progress-circle" width="100" height="100">
+                    <circle cx="50" cy="50" r="45" stroke="#ddd" stroke-width="10" fill="none"></circle>
+                    <circle id="progress-indicator" cx="50" cy="50" r="45" stroke="#4caf50" stroke-width="10"
+                        fill="none" stroke-dasharray="282.74" stroke-dashoffset="282.74" stroke-linecap="round">
+                    </circle>
+                </svg>
+                <span id="progress-text">0%</span>
+            </div>
+
+
+
+            <div class="header__info--text">
+                <p class="header__info-courseName">
+                    PSD004 - HISTORIA Y EPISTEMOLOGIA DE LA PSICOLOGIA
+                </p>
+                <p>
+                    <span>Duración:</span> 17 semanas - <span>96
+                        horas de dedicación</span> (4 créditos académicos)
+                </p>
+                <p><span>Docente tutor:</span> Leandra Edna Peña Aguirre</p>
+            </div>
+
+        </div>
+
+        <div class="header__info--date">
+            <div>
+                <p>
+                    <span>Inicia:</span> 29 de enero
+                </p>
+                <p>
+                    <span>Finaliza:</span> 29 de Noviembre
+                </p>
+            </div>
+
+        </div>
+
+
+    </header>
+
+
+
+    <script>
+        // Definir la variable porcent
+        let porcent = 78;
+
+        // elementos del DOM
+        let circle = document.getElementById('progress-indicator');
+        let text = document.getElementById('progress-text');
+
+        // Actualiza el texto del porcentaje
+        text.textContent = porcent + '%';
+
+        // Calcula el desplazamiento del dash para el círculo
+        let radius = circle.r.baseVal.value;
+        let circumference = 2 * Math.PI * radius;
+        let offset = circumference - (porcent / 100 * circumference);
+
+        circle.style.strokeDashoffset = offset;
+
+        // Establece el color del borde de progreso dependiendo del porcentaje
+        if (porcent <= 25) {
+            circle.style.stroke = '#E27085';
+        } else if (porcent <= 50) {
+            circle.style.stroke = '#FF9B52';
+        } else if (porcent <= 99) {
+            circle.style.stroke = '#FFB950';
+        } else if (porcent >= 100) {
+            circle.style.stroke = '#50B447';
+        }
+
+    </script>
+</body>
+
+</html>

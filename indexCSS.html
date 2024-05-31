@@ -12,15 +12,113 @@
 
 <style>
     .diaryContainer {
-        /* top | right | bottom | left */
-        padding: 0.75rem 0.5rem 0.75rem 0.5rem;
+        /* top and bottom | left and right */
+        padding: 0.75rem 0.5rem;
         margin-top: 0.75rem;
         background: #F9F9F9;
+        margin-top: -20px;
     }
+
+    .container__header {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        margin-top: 28px;
+        background-color: #FCFCFC;
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.25rem;
+        /* offset-x | offset-y | blur-radius | color */
+        box-shadow: 0px 2px 6px rgb(240, 240, 240);
+    }
+
+    .header__info--course {
+        display: grid;
+        grid-column: span 9 / span 9;
+        justify-content: left;
+        text-align: left;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+
+    }
+
+
+    .header__info--date {
+        display: grid;
+        grid-column: span 3 / span 3;
+        justify-content: right;
+        background-color: #ffffff;
+        padding: 20px;
+        align-items: center;
+        background-color: #FCFCFC;
+        font-size: 18px;
+        color: #525252;
+        line-height: 10px;
+    }
+
+    .header__info--progress,
+    .header__info--progressMobile {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .progress-circle {
+        transform: rotate(180deg);
+        /* Rotar todo el SVG para que empiece desde arriba */
+    }
+
+    #progress-indicator {
+        transition: stroke-dashoffset 0.35s;
+        transform: rotate(90deg);
+        /* Contrarrestar la rotación del SVG */
+        transform-origin: center;
+        stroke-linecap: round;
+        /* Bordes redondeados */
+    }
+
+    .header__info--progress span,
+    .header__info--progressMobile span {
+        position: absolute;
+        font-size: 18px;
+        /* Ajustar el tamaño del texto */
+        font-weight: bold;
+    }
+
+    .header__info--text {
+        line-height: 0.35em;
+        margin-left: 20px;
+        color: #7A7A7A;
+        font-size: 15px;
+    }
+
+
+    .header__info--text p {
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+    }
+
+    .header__info-courseName {
+        font-weight: bold;
+        color: #476873;
+        font-size: 18px;
+    }
+
+    .header__info--text span,
+    .header__info--date span {
+        font-weight: bold;
+        color: #6D6F6D;
+    }
+
+
+
 
     .container__section {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
+        margin-top: 28px;
     }
 
 
@@ -32,23 +130,26 @@
         height: auto;
         font-weight: 600;
         text-align: center;
-        background: #328094;
-        color: #FFFFFF;
+        background-color: #ffffff;
+        border-left: solid 9px#6E6E6E;
+        box-shadow: 0px 2px 3px -1px rgba(97, 97, 97, 0.1);
     }
 
     .section__unit--title {
         margin-left: 8px;
         margin-right: 8px;
         font-size: 22px;
+        color: #6C6C6C;
     }
 
     .section__unit--fecha {
         margin-left: 8px;
         margin-right: 8px;
-        font-size: 0.875rem;
+        font-size: 1rem;
         line-height: 1.25rem;
         padding-top: 10px;
         display: block;
+        color: #328094;
     }
 
     .section__activity {
@@ -63,8 +164,8 @@
     .diaryActivity {
         display: grid;
         overflow: hidden;
-        /* top | right | bottom | left */
-        padding: 0.25rem 0.75rem 0.25rem 0.75rem;
+        /* top and bottom | left and right */
+        padding: 0.25rem 0.75rem;
         margin-right: 0.75rem;
         border-radius: 0.25rem;
         width: 100%;
@@ -82,24 +183,20 @@
 
 
     .diaryActivity-info {
-        padding: 16px;
-        background-color: #fafafa;
-        border-top: 1px solid #ddd;
+        /* top and bottom | left and right */
+        padding: 1.5% 0%;
+        background-color: #ffffff;
+        border-top: 1px solid #D8D8D8;
         height: 0;
         overflow: hidden;
         transition: height 0.3s ease-out;
-        border: solid red 1px;
         display: none;
     }
 
     .diaryActivity.active .diaryActivity-info {
-        height: auto;
+
         display: block;
     }
-
-
-
-
 
 
     .activity--qualified {
@@ -117,6 +214,11 @@
         position: relative;
     }
 
+    .activity--blocked {
+        border-left: solid #646464 5.8px;
+        position: relative;
+    }
+
     .activity__content {
         display: flex;
         display: grid;
@@ -127,20 +229,49 @@
     }
 
 
+    .diaryActivity__weighting--detailed {
+        font-size: 0.94rem;
+        border-radius: 0.25rem;
+        width: 110px;
+        font-weight: 400;
+        padding: 2px 6px 2px 6px;
+        color: #FFFFFF;
+        text-align: center;
+        box-shadow: 0px 1px 5px rgb(240, 240, 240);
+    }
+
+    /* Hace parte del hover que solo va hasta 1024px, pero se saca del media para reutilizar su propiedad "bg" */
+    .weighing--qualified,
+    .detailedWeighting--qualified {
+        background-color: #50B447;
+    }
+
+    .weighing--pending,
+    .detailedWeighting--pending {
+        background-color: #E09523;
+    }
+
+    .weighing--retarded,
+    .detailedWeighting--retarded {
+        background-color: #D04961;
+    }
+
+    .weighing--blocked,
+    .detailedWeighting--blocked {
+        background-color: #646464;
+    }
+
+
     @media (min-width: 1024px) {
 
-        
-        .diaryContainer {
-            background-color: #922f71;
-        }
 
         .activity--qualified:hover .activity__content,
         .activity--pending:hover .activity__content,
-        .activity--retarded:hover .activity__content {
+        .activity--retarded:hover .activity__content,
+        .activity--blocked:hover .activity__content {
             padding-left: 70px;
             align-items: center;
         }
-
 
 
         .activity__border-text {
@@ -158,19 +289,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            
-        }
 
-        .weighing--qualified {
-            background-color: #50B447;
-        }
-
-        .weighing--pending {
-            background-color: #E09523;
-        }
-
-        .weighing--retarded {
-            background-color: #D04961;
         }
 
 
@@ -183,7 +302,7 @@
         .border__span--text {
             font-weight: 400;
             font-size: 14px;
-            margin-top: 4px;
+
         }
 
         .border__span--porcent {
@@ -193,19 +312,19 @@
 
         .activity--qualified:hover .activity__border-text span,
         .activity--pending:hover .activity__border-text span,
-        .activity--retarded:hover .activity__border-text span {
+        .activity--retarded:hover .activity__border-text span,
+        .activity--blocked:hover .activity__border-text span {
             opacity: 1;
         }
 
 
         .activity--qualified:hover .activity__border-text,
         .activity--pending:hover .activity__border-text,
-        .activity--retarded:hover .activity__border-text {
+        .activity--retarded:hover .activity__border-text,
+        .activity--blocked:hover .activity__border-text {
             width: 55px;
             padding-left: 8px;
             padding-right: 8px;
-
-
         }
 
     }
@@ -228,7 +347,27 @@
         margin-right: 0.25rem;
         text-align: center;
         font-size: 22px;
-        color: #2C2C2C;
+    }
+
+    .icon__qualified--approved {
+        color: #50B447;
+    }
+
+    .icon__qualified--failed {
+        color: #FDB425;
+    }
+
+
+    .activity__icon--pending {
+        color: #E09523;
+    }
+
+    .activity__icon--retarded {
+        color: #D04961;
+    }
+
+    .activity__icon--blocked {
+        color: #3F3F3F;
     }
 
     .activity__name--text {
@@ -241,10 +380,14 @@
 
     .activity__name--span {
         display: block;
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         line-height: 1rem;
         font-weight: 400;
         color: #6D6F6D;
+    }
+
+    .activity__span--qualified {
+        color: #50B447;
     }
 
     .span--retarded {
@@ -255,6 +398,13 @@
         display: flex;
         grid-column: span 4 / span 4;
         align-items: center;
+    }
+
+    .activity__content--weighting {
+        display: flex;
+        grid-column: span 1 / span 1;
+        align-items: center;
+        justify-content: center;
     }
 
     .date__content--text {
@@ -279,11 +429,28 @@
     }
 
     .activity__content--qualification {
-        font-size: 18px;
+        font-size: 19px;
         line-height: 1.75rem;
-        font-weight: 500;
+        font-weight: 600;
+        align-items: center;
+    }
+
+    .approved--qualification {
         color: #50B447;
     }
+
+    .failed--qualification {
+        color: #D04961;
+    }
+
+
+
+
+    .qualification__icon {
+        font-size: 15px;
+        color: #8b8b8b;
+    }
+
 
     .activity__icon--state {
         color: #50B447;
@@ -313,7 +480,7 @@
         background: #FFF0F3;
     }
 
-    .activity__weighting--mobile {
+    .activity__state--mobile {
         display: grid;
         grid-column: span 3 / span 3;
         align-items: center;
@@ -323,8 +490,63 @@
         padding: 0.75rem 0.75rem 0.75rem 0.75rem;
     }
 
+    .activity__content--icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .header__info--progressMobile {
+        display: none;
+    }
+
+
+
+    @media (max-width: 1300px) {
+        .section__unit--title {
+            font-size: 19px;
+        }
+
+        .section__unit--fecha {
+            font-size: 16px;
+
+        }
+    }
+
 
     @media (max-width: 1024px) {
+
+        .header__info--course {
+            display: grid;
+            grid-column: span 12 / span 12;
+            display: flex;
+            padding: 5px 0px 0px 0px;
+        }
+
+        .header__info--text,
+        .header__info--date p {
+            margin-left: 20px;
+        }
+
+        .header__info--date {
+            display: grid;
+            grid-column: span 12 / span 12;
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 0px 10px 0px;
+        }
+
+
+        .header__info--progress {
+            display: none;
+        }
+
+        .header__info--progressMobile {
+            display: flex;
+            margin-right: 20px;
+        }
+
 
         .section__unit {
             grid-column: span 12 / span 12;
@@ -335,9 +557,9 @@
             grid-column: span 12 / span 12;
         }
 
-        .diaryContainer {
+        /* .diaryContainer {
             background-color: #50B447;
-        }
+        } */
 
         .diaryActivity {
             margin-right: 0rem;
@@ -356,320 +578,702 @@
 
 
     @media (max-width: 768px) {
-        .diaryContainer {
+
+
+        /* .diaryContainer {
             background-color: #5f47b4;
-        }
+        } */
 
         .activity__name--text {
             font-size: 15px;
-            line-height: 1rem;
+
         }
 
-        .date__content--span {
-            font-size: 14px;
-            line-height: 1rem;
-        }
-
+        .date__content--span,
         .date__content--text {
             font-size: 14px;
-            line-height: 1.25rem;
+            line-height: 1rem;
         }
-
-
 
         .activity__content {
             padding-left: 0px;
         }
 
-        .activity__weighting--mobile {
+        .activity__state--mobile {
             display: block;
-            text-align: right;
+            text-align: center;
+            /* border: solid red 0.3px; */
+            justify-content: end;
+
         }
 
         .activity__content--name {
-            grid-column: span 9 / span 9;
+            grid-column: span 10 / span 10;
+            /* border: solid red 0.3px; */
 
         }
 
         .activity__content--date {
-            grid-column: span 8 / span 8;
+            grid-column: span 10 / span 10;
+            /* border: solid red 0.3px; */
+
+        }
+
+        .activity__content--icon {
+            display: flex;
+            grid-column: span 2 / span 2;
+            justify-content: center;
+            align-items: center;
+            /* border: solid red 0.3px; */
+        }
+
+        .activity__state--mobile {
+            display: grid;
+            grid-column: span 2 / span 2;
+            align-items: center;
+            justify-content: center;
 
         }
 
         .activity__content--state {
             grid-column: span 4 / span 4;
-
-            justify-content: end;
             margin: 0px;
+            /* border: solid red 0.3px; */
         }
 
         .activity__content--date {
             margin-right: 0px;
         }
 
+        .activity__content--state {
+            display: none;
+        }
+
     }
 
     @media (max-width: 640px) {
 
-        .activity__icon--state,
+        .header__info--text,
+        .header__info--date p {
+            margin-left: 10px;
+        }
+
+        .activity__state--mobile {
+            grid-column: span 3 / span 3;
+        }
+
+        .activity__content--name {
+            grid-column: span 9 / span 9;
+        }
+
         .activity__name--icon {
             display: none;
         }
 
-        .diaryContainer {
+        /* .diaryContainer {
             background-color: #dbacd5;
-        }
+        } */
 
-        .diaryActivity {
-            /* top | right | bottom | left */
-            padding: 0.75rem 0.75rem 0.75rem 0.75rem;
-        }
+
 
     }
 </style>
 
 <body style="font-family:Roboto Condensed ;">
-
-    <div class="diaryContainer">
-
-        <section class="container__section">
-
-            <div class="section__unit">
-                <p class="section__unit--title">Unidad #1 Antecedentes Históricos <span
-                        class="section__unit--fecha">Disponible a partir de 29 de enero</span></p>
-            </div>
-            <div class="section__activity">
-
-                <!-- Activity #1 -->
-                <div class="diaryActivity activity--qualified" onclick="toggleInfo(event, this)">
-
-                    <div class="activity__border-text weighing--qualified">
-                        <span class="border__span--porcent">10%</span>
-                        <span class="border__span--text">ponderado</span>
-                    </div>
-
-                    <div class="activity__content">
-
-                        <!-- Nombre de la actividad -->
-                        <div class="activity__content--name">
+    <div style="max-width: 1800px; margin: auto;">
+        <header class="container__header">
 
 
-                            <div class="activity__name">
-
-                                <div class="name__content--icon">
-                                    <i
-                                        class="fa-regular fa-circle-check activity__icon--state activity__name--icon"></i>
-                                </div>
-
-                                <div class="activity__name--text">
-                                    Taller de la Unidad 1
-                                    <span class="activity__name--span">
-                                        Ya recibiste feedback
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Fin Nombre de la actividad -->
 
 
-                        <!-- Ponderacion Movil -->
-                        <div class="activity__weighting--mobile">
-                            <div class="rounded-full border border-2 w-[24px]">
-                                10
-                            </div>
-                        </div>
-                        <!--Fin Ponderacion Movil -->
+            <div class="header__info--course">
 
-
-                        <!-- Fechas -->
-                        <div class="activity__content--date">
-                            <span class="date__content--text">Completada el <span class="date__content--span">15 de
-                                    marzo de
-                                    2024</span></span>
-                        </div>
-                        <!-- Fin fechas -->
-
-                        <!-- Calificación o Estado-->
-                        <div class="activity__content--state">
-                            <div class="activity__content--qualification">
-                                5,0 <i class="fa-solid fa-up-right-from-square"></i>
-                            </div>
-                        </div>
-                        <!--Fin Calificación o Estado-->
-
-
-                        <!-- Ponderación -->
-                        <div style="grid-column: span 1 / span 1;justify-content: center;display: flex; align-items: center; "
-                            class="">
-
-                        </div>
-                        <!--Fin Ponderación -->
-                    </div>
-
-                    <div class="diaryActivity-info">
-                        <p>Información adicional que se despliega al hacer clic en la card.</p>
-                    </div>
+                <div class="header__info--progress">
+                    <svg class="progress-circle" width="80" height="80">
+                        <circle cx="40" cy="40" r="35" stroke="#E6E6E6" stroke-width="8" fill="none"></circle>
+                        <circle id="progress-indicator" cx="40" cy="40" r="35" stroke="#4caf50" stroke-width="8"
+                            fill="none" stroke-dasharray="219.91" stroke-dashoffset="219.91" stroke-linecap="round">
+                        </circle>
+                    </svg>
+                    <span id="progress-text">0%</span>
                 </div>
 
 
-                <!-- Activity #2 -->
-                <div class="diaryActivity activity--pending" onclick="toggleInfo(event, this)">
-
-
-                    <div class="activity__border-text weighing--pending">
-                        <span class="border__span--porcent">10%</span>
-                        <span class="border__span--text">ponderado</span>
-                    </div>
-
-                    <div class="activity__content">
-
-                        <!-- Nombre de la actividad -->
-                        <div class="activity__content--name">
-                            <div class="activity__name">
-                                <div class="name__content--icon">
-                                    <i class="fa-solid fa-user-check activity__name--icon"></i>
-                                </div>
-                                <div class="activity__name--text">
-                                    Sed ut perspiciatis unde miste...
-                                    <span class="block text-sm text-[#6D6F6D]">
-
-                                        <div class="activity__name--span">
-                                            <i class="fa-regular fa-clock"
-                                                style="font-size: 0.875rem;line-height: 1.25rem; color: #E09523;"></i>
-                                            Faltan 7 días
-                                        </div>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Fin Nombre de la actividad -->
-
-                        <!-- Ponderacion Movil -->
-                        <div class="activity__weighting--mobile">
-                            <div class="rounded-full border border-2 w-[24px]">
-                                10
-                            </div>
-                        </div>
-                        <!--Fin Ponderacion Movil -->
-
-
-                        <!-- Fechas -->
-                        <div class="activity__content--date">
-                            <span class="date__content--text">Disponible de <span class="date__content--span">septiembre
-                                    2 a noviembre 15</span></span>
-                        </div>
-                        <!-- Fin fechas -->
-
-
-                        <!-- Calificacón o estado  -->
-                        <div class="activity__content--state">
-                            <div>
-                                <div class="activity__state state--pending">
-                                    Pendiente
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Ponderación -->
-                        <div class="grid col-span-12 sm:col-span-1 items-center sm:justify-end justify-center">
-                            <!-- <div
-                                class="justify-center pt-[6px] text-center border border-2 rounded-full text-xs w-8 h-8 hidden sm:block">
-                                10%
-                            </div> -->
-                        </div>
-                    </div>
-                    <div class="diaryActivity-info">
-                        <p>Información adicional que se despliega al hacer clic en la card.</p>
-                    </div>
-                </div>
-
-
-
-                <!-- Activity #3 -->
-                <div class="diaryActivity activity--retarded" onclick="toggleInfo(event, this)">
-
-                    <div class="activity__border-text weighing--retarded">
-                        <span class="border__span--porcent">10%</span>
-                        <span class="border__span--text">ponderado</span>
-                    </div>
-
-                    <div class="activity__content">
-                        <!-- Nombre de la actividad -->
-                        <div class="activity__content--name">
-                            <div class="activity__name">
-                                <div class="name__content--icon">
-                                    <i class="fa-solid fa-user-check activity__name--icon"></i>
-                                </div>
-                                <div class="activity__name--text">
-                                    Sed ut perspiciatis unde miste...
-                                    <span class="block text-sm text-[#6D6F6D]">
-
-                                        <div class="activity__name--span span--retarded">
-                                            Retrasada 2 días
-                                        </div>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Fin Nombre de la actividad -->
-
-                        <!-- Ponderacion Movil -->
-                        <div class="activity__weighting--mobile">
-                            <div class="rounded-full border border-2 w-[24px]">
-                                10
-                            </div>
-                        </div>
-                        <!-- Fin Ponderacion Movil -->
-
-
-                        <!-- Fechas -->
-                        <div class="activity__content--date">
-
-                            <p class="date__content--text">
-                                Venció el <span class="date__content--span">15 de marzo de 2024</span></p>
-                        </div>
-                        <!-- Fin fechas -->
-
-
-                        <!-- Calificacón o estado -->
-                        <div class="activity__content--state">
-                            <div>
-                                <div class="activity__state state--retarded">
-                                    Sin entrega
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Ponderación -->
-                        <div class="grid col-span-12 sm:col-span-1 items-center sm:justify-end justify-center">
-                            <div
-                                class="justify-center pt-[6px] text-center border border-2 rounded-full text-xs w-8 h-8 hidden sm:block">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="diaryActivity-info">
-                        <p>Información adicional que se despliega al hacer clic en la card.</p>
-                    </div>
+                <div class="header__info--text">
+                    <p class="header__info-courseName">
+                        PSD004 - HISTORIA Y EPISTEMOLOGIA DE LA PSICOLOGIA
+                    </p>
+                    <p>
+                        Duración: 17 semanas - 96
+                        horas de dedicación (4 créditos académicos)
+                    </p>
+                    <p>Docente tutor: Leandra Edna Peña Aguirre</p>
                 </div>
             </div>
-        </section>
+
+            <div class="header__info--date">
+                <div>
+                    <p>
+                        <span>Inicia:</span> 29 de enero
+                    </p>
+                    <p>
+                        <span>Finaliza:</span> 29 de Noviembre
+                    </p>
+                </div>
+
+                <div class="header__info--progressMobile">
+                    <svg class="progress-circle" width="80" height="80">
+                        <circle cx="40" cy="40" r="35" stroke="#E6E6E6" stroke-width="8" fill="none"></circle>
+                        <circle id="progress-indicator" cx="40" cy="40" r="35" stroke="#4caf50" stroke-width="8"
+                            fill="none" stroke-dasharray="219.91" stroke-dashoffset="219.91" stroke-linecap="round">
+                        </circle>
+                    </svg>
+                    <span id="progress-text">0%</span>
+                </div>
+
+            </div>
+        </header>
+
+
+        <div class="diaryContainer">
+
+            <section class="container__section">
+
+                <div class="section__unit">
+                    <p class="section__unit--title">Unidad #1 Antecedentes Históricos <span
+                            class="section__unit--fecha">Disponible a partir de 29 de enero</span></p>
+                </div>
+
+
+
+                <div class="section__activity">
+                    <!-- Actividad #1 Calificada Nota Aprobada-->
+                    <div class="diaryActivity activity--qualified" onclick="toggleInfo(event, this)">
+
+                        <div class="activity__border-text weighing--qualified">
+                            <span class="border__span--porcent">10%</span>
+                            <span class="border__span--text">ponderado</span>
+                        </div>
+
+                        <div class="activity__content">
+                            <!-- Nombre de la actividad -->
+                            <div class="activity__content--name">
+
+
+                                <div class="activity__name">
+
+                                    <div class="name__content--icon">
+                                        <i
+                                            class="fa-regular fa-circle-check activity__name--icon icon__qualified--approved"></i>
+                                    </div>
+
+                                    <div class="activity__name--text">
+                                        Taller de la Unidad 1
+                                        <span class="activity__name--span activity__span--qualified">
+                                            Ya recibiste feedback
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Fin Nombre de la actividad -->
+
+                            <!-- Calificación o estado Movil -->
+                            <div class="activity__state--mobile">
+                                <div class="activity__content--qualification approved--qualification">
+                                    5,0 <i class="fa-solid fa-up-right-from-square qualification__icon"></i>
+                                </div>
+                            </div>
+                            <!-- Fin Calificación o estado Movil -->
+
+
+                            <!-- Fechas -->
+                            <div class="activity__content--date">
+                                <p class="date__content--text">
+                                    Completada el <span class="date__content--span">15 de marzo de 2024</span></p>
+                            </div>
+                            <!-- Fin fechas -->
+
+
+                            <!-- Calificación o estado -->
+                            <div class="activity__content--state">
+                                <div class="activity__content--qualification approved--qualification">
+                                    5,0 <i class="fa-solid fa-up-right-from-square qualification__icon"></i>
+                                </div>
+                            </div>
+                            <!--Fin Calificación o estado -->
+
+                            <!-- Ponderación -->
+                            <div class="activity__content--icon">
+                                <div class="">
+                                    <div style="line-height: 0%;">
+                                        <div><i class="fa-solid fa-angle-up"></i></div>
+                                        <div><i class="fa-solid fa-angle-down"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info detallada de la actividad -->
+                        <div class="diaryActivity-info">
+                            <div class="diaryActivity__weighting--detailed detailedWeighting--qualified">
+                                <span><span>Ponderación</span style="font-weight: bolder;"> 10%</span>
+                            </div>
+                            <p>Información adicional que se despliega al hacer clic en la card.</p>
+                        </div>
+                    </div>
+                    <!-- Fin de Actividad #1 -->
+
+
+
+                    <!-- Actividad #2 Pendiente-->
+
+                    <div class="diaryActivity activity--pending" onclick="toggleInfo(event, this)">
+
+                        <div class="activity__border-text weighing--pending">
+                            <span class="border__span--porcent">10%</span>
+                            <span class="border__span--text">ponderado</span>
+                        </div>
+
+                        <div class="activity__content">
+                            <!-- Nombre de la actividad -->
+                            <div class="activity__content--name">
+                                <div class="activity__name">
+                                    <div class="name__content--icon">
+                                        <i class="fa-regular fa-clock activity__name--icon activity__icon--pending"></i>
+                                    </div>
+                                    <div class="activity__name--text">
+                                        Sed ut perspiciatis unde miste...
+                                        <span class="block text-sm text-[#6D6F6D]">
+
+                                            <div class="activity__name--span span--pending">
+                                                Faltan 7 días
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin Nombre de la actividad -->
+
+
+
+                            <!-- Calificación o estado Movil -->
+                            <div class="activity__state--mobile">
+                                <div>
+                                    <div class="activity__state state--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Calificación o estado Movil -->
+
+
+
+                            <!-- Fechas -->
+                            <div class="activity__content--date">
+
+
+                                <p class="date__content--text">
+                                    Disponible desde <span class="date__content--span">abril 2 hasta agosto 15 </span>
+                                </p>
+                            </div>
+                            <!-- Fin fechas -->
+
+
+                            <!-- Calificacón o estado -->
+                            <div class="activity__content--state">
+                                <div>
+                                    <div class="activity__state state--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ponderación -->
+                            <div class="activity__content--icon">
+                                <div class="">
+                                    <div style="line-height: 0%;">
+                                        <div><i class="fa-solid fa-angle-up"></i></div>
+                                        <div><i class="fa-solid fa-angle-down"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info detallada de la actividad -->
+                        <div class="diaryActivity-info">
+                            <div class="diaryActivity__weighting--detailed detailedWeighting--pending">
+                                <span><span>Ponderación</span style="font-weight: bolder;"> 10%</span>
+                            </div>
+                            <p>Información adicional que se despliega al hacer clic en la card.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fin de Actividad #2 -->
+
+
+
+                    <!-- Actividad #3  Bloqueada -->
+                    <div class="diaryActivity activity--retarded" onclick="toggleInfo(event, this)">
+
+                        <div class="activity__border-text weighing--retarded">
+                            <span class="border__span--porcent">10%</span>
+                            <span class="border__span--text">ponderado</span>
+                        </div>
+
+                        <div class="activity__content">
+                            <!-- Nombre de la actividad -->
+                            <div class="activity__content--name">
+                                <div class="activity__name">
+                                    <div class="name__content--icon">
+                                        <!-- <i class="fa-solid fa-user-check activity__name--icon"></i> -->
+                                        <i
+                                            class="fa-solid fa-clock-rotate-left activity__name--icon activity__icon--retarded"></i>
+                                    </div>
+                                    <div class="activity__name--text">
+                                        Sed ut perspiciatis unde miste...
+                                        <span class="block text-sm text-[#6D6F6D]">
+
+                                            <div class="activity__name--span span--retarded">
+                                                Retrasada 2 días
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin Nombre de la actividad -->
+
+                            <!-- Calificación o estado Movil -->
+                            <div class="activity__state--mobile">
+                                <div>
+                                    <div class="activity__state state--retarded">
+                                        Sin entrega
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Calificación o estado Movil -->
+
+
+                            <!-- Fechas -->
+                            <div class="activity__content--date">
+
+                                <p class="date__content--text">
+                                    Venció el <span class="date__content--span">15 de marzo de 2024</span></p>
+                            </div>
+                            <!-- Fin fechas -->
+
+
+                            <!-- Calificacón o estado -->
+                            <div class="activity__content--state">
+                                <div>
+                                    <div class="activity__state state--retarded">
+                                        Sin entrega
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Icon arrow up-down -->
+                            <div class="activity__content--icon">
+                                <div class="">
+                                    <div style="line-height: 0%;">
+                                        <div><i class="fa-solid fa-angle-up"></i></div>
+                                        <div><i class="fa-solid fa-angle-down"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Info detallada de la actividad -->
+                        <div class="diaryActivity-info">
+                            <div class="diaryActivity__weighting--detailed detailedWeighting--retarded">
+                                <span><span>Ponderación</span style="font-weight: bolder;"> 10%</span>
+                            </div>
+                            <p>Información adicional que se despliega al hacer clic en la card.</p>
+                        </div>
+                    </div>
+                    <!-- Fin de Actividad #3 -->
+
+                </div>
+            </section>
+
+
+            <section class="container__section">
+
+                <div class="section__unit">
+                    <p class="section__unit--title">Unidad #1 Antecedentes Históricos <span
+                            class="section__unit--fecha">Disponible a partir de 29 de enero</span></p>
+                </div>
+                <div class="section__activity">
+
+                    <!-- Actividad #1 Calificada Nota Reprobada-->
+                    <div class="diaryActivity activity--qualified" onclick="toggleInfo(event, this)">
+
+                        <div class="activity__border-text weighing--qualified">
+                            <span class="border__span--porcent">10%</span>
+                            <span class="border__span--text">ponderado</span>
+                        </div>
+
+                        <div class="activity__content">
+                            <!-- Nombre de la actividad -->
+                            <div class="activity__content--name">
+
+                                <div class="activity__name">
+
+                                    <div class="name__content--icon">
+
+                                        <i
+                                            class="fa-solid fa-triangle-exclamation activity__name--icon icon__qualified--failed"></i>
+                                    </div>
+
+                                    <div class="activity__name--text">
+                                        Taller de la Unidad 1
+                                        <span class="activity__name--span activity__span--qualified">
+                                            Ya recibiste feedback
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Fin Nombre de la actividad -->
+
+                            <!-- Calificación o estado Movil -->
+                            <div class="activity__state--mobile">
+                                <div class="activity__content--qualification failed--qualification">
+                                    2,0 <i class="fa-solid fa-up-right-from-square qualification__icon"></i>
+                                </div>
+                            </div>
+                            <!-- Fin Calificación o estado Movil -->
+
+
+                            <!-- Fechas -->
+                            <div class="activity__content--date">
+                                <p class="date__content--text">
+                                    Completada el <span class="date__content--span">15 de marzo de 2024</span></p>
+                            </div>
+                            <!-- Fin fechas -->
+
+
+                            <!-- Calificación o estado -->
+                            <div class="activity__content--state">
+                                <div class="activity__content--qualification failed--qualification">
+                                    2,0 <i class="fa-solid fa-up-right-from-square qualification__icon"></i>
+                                </div>
+                            </div>
+                            <!--Fin Calificación o estado -->
+
+                            <!-- Ponderación -->
+                            <div class="activity__content--icon">
+                                <div class="">
+                                    <div style="line-height: 0%;">
+                                        <div><i class="fa-solid fa-angle-up"></i></div>
+                                        <div><i class="fa-solid fa-angle-down"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info detallada de la actividad -->
+                        <div class="diaryActivity-info">
+                            <div class="diaryActivity__weighting--detailed detailedWeighting--qualified">
+                                <span><span>Ponderación</span style="font-weight: bolder;"> 10%</span>
+                            </div>
+                            <p>Información adicional que se despliega al hacer clic en la card.</p>
+                        </div>
+                    </div>
+                    <!-- Fin de Actividad #1 -->
+
+
+
+                    <!-- Actividad #2 Pendiente-->
+
+                    <div class="diaryActivity activity--pending" onclick="toggleInfo(event, this)">
+
+                        <div class="activity__border-text weighing--pending">
+                            <span class="border__span--porcent">10%</span>
+                            <span class="border__span--text">ponderado</span>
+                        </div>
+
+                        <div class="activity__content">
+                            <!-- Nombre de la actividad -->
+                            <div class="activity__content--name">
+                                <div class="activity__name">
+                                    <div class="name__content--icon">
+                                        <i class="fa-regular fa-clock activity__name--icon activity__icon--pending"></i>
+                                    </div>
+                                    <div class="activity__name--text">
+                                        Sed ut perspiciatis unde miste...
+                                        <span class="block text-sm text-[#6D6F6D]">
+
+                                            <div class="activity__name--span span--pending">
+                                                Faltan 7 días
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin Nombre de la actividad -->
+
+
+
+                            <!-- Calificación o estado Movil -->
+                            <div class="activity__state--mobile">
+                                <div>
+                                    <div class="activity__state state--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Calificación o estado Movil -->
+
+
+
+                            <!-- Fechas -->
+                            <div class="activity__content--date">
+
+
+                                <p class="date__content--text">
+                                    Disponible desde <span class="date__content--span">abril 2 hasta agosto 15 </span>
+                                </p>
+                            </div>
+                            <!-- Fin fechas -->
+
+
+                            <!-- Calificacón o estado -->
+                            <div class="activity__content--state">
+                                <div>
+                                    <div class="activity__state state--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ponderación -->
+                            <div class="activity__content--icon">
+                                <div class="">
+                                    <div style="line-height: 0%;">
+                                        <div><i class="fa-solid fa-angle-up"></i></div>
+                                        <div><i class="fa-solid fa-angle-down"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info detallada de la actividad -->
+                        <div class="diaryActivity-info">
+                            <div class="diaryActivity__weighting--detailed detailedWeighting--pending">
+                                <span><span>Ponderación</span style="font-weight: bolder;"> 10%</span>
+                            </div>
+                            <p>Información adicional que se despliega al hacer clic en la card.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fin de Actividad #2 -->
+
+
+
+                    <!-- Actividad #3 Bloqueada -->
+                    <div class="diaryActivity activity--blocked" style="opacity: 80%;"
+                        onclick="toggleInfo(event, this)">
+
+                        <div class="activity__border-text weighing--blocked">
+                            <span class="border__span--porcent">10%</span>
+                            <span class="border__span--text">ponderado</span>
+                        </div>
+
+                        <div class="activity__content">
+                            <!-- Nombre de la actividad -->
+                            <div class="activity__content--name">
+                                <div class="activity__name">
+                                    <div class="name__content--icon">
+                                        <!-- <i class="fa-solid fa-user-check activity__name--icon"></i> -->
+
+
+                                        <i class="fa-solid fa-lock activity__name--icon activity__icon--blocked"></i>
+                                    </div>
+                                    <div class="activity__name--text">
+                                        Sed ut perspiciatis unde miste...
+                                        <!-- <span class="block text-sm text-[#6D6F6D]">
+
+                                            <div class="activity__name--span">
+                                                Bloqueada
+                                            </div>
+                                        </span> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin Nombre de la actividad -->
+
+
+                            <!-- Calificación o estado Movil -->
+                            <div class="activity__state--mobile">
+                                <div>
+                                    <div class="activity__state state--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Calificación o estado Movil -->
+
+                            <!-- Fechas -->
+                            <div class="activity__content--date">
+                                <p class="date__content--text">
+                                    Disponible desde <span class="date__content--span">abril 2 hasta agosto 15 </span>
+                                </p>
+                            </div>
+                            <!-- Fin fechas -->
+
+
+                            <!-- Calificacón o estado -->
+                            <div class="activity__content--state">
+                                <div>
+                                    <div class="activity__state state--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Icon arrow up-down -->
+                            <div class="activity__content--icon">
+                                <div class="">
+                                    <div style="line-height: 0%;">
+                                        <div><i class="fa-solid fa-angle-up"></i></div>
+                                        <div><i class="fa-solid fa-angle-down"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Info detallada de la actividad -->
+                        <div class="diaryActivity-info">
+                            <div class="diaryActivity__weighting--detailed detailedWeighting--blocked">
+                                <span><span>Ponderación</span style="font-weight: bolder;"> 10%</span>
+                            </div>
+                            <p>Información adicional que se despliega al hacer clic en la card.</p>
+                        </div>
+                    </div>
+                    <!-- Fin de Actividad #3 -->
+
+                </div>
+            </section>
+        </div>
     </div>
-
-
     <script>
         function toggleInfo(event, diaryActivity) {
             const info = diaryActivity.querySelector('.diaryActivity-info');
             const hoverInfo = diaryActivity.querySelector('.activity__border-text');
+            const hoverContent = diaryActivity.querySelector('.activity__content');
             if (diaryActivity.classList.contains('active')) {
                 diaryActivity.classList.remove('active');
                 info.style.height = '0';
-                hoverInfo.style.display = 'block'; // Muestra el hover-info nuevamente
+                hoverInfo.style.display = 'flex'; // Muestra el hover-info nuevamente
+                hoverContent.style.padding = '';
             } else {
                 closeAllDiaryActivities(); // Cierra todas las otras diary activities
                 diaryActivity.classList.add('active');
                 info.style.height = info.scrollHeight + 'px';
+                hoverContent.style.padding = '0';
                 hoverInfo.style.display = 'none'; // Oculta el hover-info
             }
             event.stopPropagation(); // Evita que el clic se propague al document
@@ -680,10 +1284,12 @@
             allDiaryActivities.forEach(diaryActivity => {
                 const info = diaryActivity.querySelector('.diaryActivity-info');
                 const hoverInfo = diaryActivity.querySelector('.activity__border-text');
+                const hoverContent = diaryActivity.querySelector('.activity__content');
                 diaryActivity.classList.remove('no-hover');
                 diaryActivity.classList.remove('active');
                 info.style.height = '0';
-                hoverInfo.style.display = 'block'; // Asegura que el hover-info esté visible
+                hoverContent.style.padding = '';
+                hoverInfo.style.display = 'flex'; // Asegura que el hover-info esté visible
             });
         }
 
@@ -694,7 +1300,37 @@
             }
         });
 
+        // Definir la variable porcent
+        let porcent = 78;
+
+        // elementos del DOM
+        let circle = document.getElementById('progress-indicator');
+
+        let text = document.getElementById('progress-text');
+
+        // Actualizar el texto del porcentaje
+        text.textContent = porcent + '%';
+
+        // Calcular el desplazamiento del dash para el círculo
+        let radius = circle.r.baseVal.value;
+        let circumference = 2 * Math.PI * radius;
+        let offset = circumference - (porcent / 100 * circumference);
+
+        circle.style.strokeDashoffset = offset;
+
+        // Establecer el color del borde de progreso dependiendo del porcentaje
+        if (porcent <= 25) {
+            circle.style.stroke = '#E27085';
+        } else if (porcent <= 50) {
+            circle.style.stroke = '#FF9B52';
+        } else if (porcent <= 99) {
+            circle.style.stroke = '#FFB950';
+        } else if (porcent >= 100) {
+            circle.style.stroke = '#50B447';
+        }
+
     </script>
 
 </body>
+
 </html>
