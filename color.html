@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto en ambos lados</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        margin: 20px;
+    }
+
+    .left-text {
+        text-align: left;
+    }
+
+    .right-text {
+        text-align: right;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="left-text">Texto a la izquierda</div>
+        <div class="right-text">Texto a la derecha</div>
+    </div>
+
+    <div style="display: flex;justify-content: space-between;">
+        <div style="font-size: 25px; color: #4C4C4C; text-align: left; border: solid red 0.3px;">
+            <span>Módulo 1:</span>
+        </div>
+        <div class="section__unit--fecha" style=" text-align: right; border: solid red 0.3px;">
+            <span>Disponible a partir de 29 de enero</span>
+        </div>
+
+
+        <div class="section__unit--title" style="display: none;">
+            <span>Introduccion al curso</span>
+        </div>
+
+        <div class="section__unit--fecha" style="display: none;">
+            <span>Disponible a partir de 29 de enero</span>
+        </div>
+
+    </div>
+</body>
+
+</html>

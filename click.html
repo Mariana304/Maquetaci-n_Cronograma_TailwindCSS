@@ -29,12 +29,13 @@
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         margin-top: 28px;
-        background-color: #FCFCFC;
+        background-color: #ffffff;
         position: relative;
         overflow: hidden;
         border-radius: 0.25rem;
         /* offset-x | offset-y | blur-radius | color */
         box-shadow: 0px 2px 6px rgb(240, 240, 240);
+        border: solid red 0.3pz;
     }
 
     .header__info--course {
@@ -48,7 +49,6 @@
 
     }
 
-
     .header__info--date {
         display: grid;
         grid-column: span 3 / span 3;
@@ -56,7 +56,7 @@
         background-color: #ffffff;
         padding: 20px;
         align-items: center;
-        background-color: #FCFCFC;
+        background-color: #ffffff;
         font-size: 18px;
         color: #525252;
         line-height: 10px;
@@ -135,14 +135,13 @@
         font-weight: 600;
         text-align: center;
         background-color: #ffffff;
-        border-left: solid 9px#6E6E6E;
         box-shadow: 0px 2px 3px -1px rgba(97, 97, 97, 0.1);
     }
 
     .section__unit--title {
         margin-left: 8px;
         margin-right: 8px;
-        font-size: 22px;
+        font-size: 20px;
         color: #6C6C6C;
     }
 
@@ -207,7 +206,7 @@
     }
 
 
-    .activity--qualified {
+    .activity__qualified--approved {
         border-left: solid #50B447 5.8px;
         position: relative;
     }
@@ -217,7 +216,13 @@
         position: relative;
     }
 
-    .activity--retarded {
+    .activity--delivered {
+        border-left: solid #3593AB 5.8px;
+        position: relative;
+    }
+
+    .activity--retarded,
+    .activity__qualified--failed {
         border-left: solid #D04961 5.8px;
         position: relative;
     }
@@ -254,8 +259,8 @@
 
 
     /* Hace parte del hover que solo va hasta 1024px, pero se saca del media para reutilizar su propiedad "bg" */
-    .weighing--qualified,
-    .detailedWeighting--qualified {
+    .weighing__qualified--approved,
+    .detailedWeighting__qualified--approved {
         background-color: #50B447;
     }
 
@@ -264,7 +269,14 @@
         background-color: #E09523;
     }
 
+    .weighing--delivered,
+    .detailedWeighting--delivered {
+        background-color: #3593AB;
+    }
+
     .weighing--retarded,
+    .weighing__qualified--failed,
+    .detailedWeighting__qualified--failed,
     .detailedWeighting--retarded {
         background-color: #D04961;
     }
@@ -277,8 +289,10 @@
 
     @media (min-width: 1024px) {
 
-        .activity--qualified:hover .activity__content,
+        .activity__qualified--approved:hover .activity__content,
+        .activity__qualified--failed:hover .activity__content,
         .activity--pending:hover .activity__content,
+        .activity--delivered:hover .activity__content,
         .activity--retarded:hover .activity__content,
         .activity--blocked:hover .activity__content {
             padding-left: 70px;
@@ -321,16 +335,20 @@
         }
 
 
-        .activity--qualified:hover .activity__border-text span,
+        .activity__qualified--approved:hover .activity__border-text span,
+        .activity__qualified--failed:hover .activity__border-text span,
         .activity--pending:hover .activity__border-text span,
+        .activity--delivered:hover .activity__border-text span,
         .activity--retarded:hover .activity__border-text span,
         .activity--blocked:hover .activity__border-text span {
             opacity: 1;
         }
 
 
-        .activity--qualified:hover .activity__border-text,
+        .activity__qualified--approved:hover .activity__border-text,
+        .activity__qualified--failed:hover .activity__border-text,
         .activity--pending:hover .activity__border-text,
+        .activity--delivered:hover .activity__border-text,
         .activity--retarded:hover .activity__border-text,
         .activity--blocked:hover .activity__border-text {
             width: 55px;
@@ -364,16 +382,19 @@
         color: #50B447;
     }
 
-    .icon__qualified--failed {
-        color: #FDB425;
-    }
+
 
 
     .activity__icon--pending {
         color: #E09523;
     }
 
-    .activity__icon--retarded {
+    .activity__icon--delivered {
+        color: #3593AB;
+    }
+
+    .activity__icon--retarded,
+    .icon__qualified--failed {
         color: #D04961;
     }
 
@@ -397,11 +418,16 @@
         color: #6D6F6D;
     }
 
-    .activity__span--qualified {
+    .activity__span--approved {
         color: #50B447;
     }
 
-    .span--retarded {
+    .span--delivered{
+        color: #328094;
+    }
+
+    .span--retarded,
+    .activity__span--failed {
         color: #D04961;
     }
 
@@ -485,6 +511,12 @@
         border: solid 1px #FFD89E;
         color: #E09523;
         background: #FFF6E8;
+    }
+
+    .state--delivered {
+        border: solid 1px #6BBED3;
+        color: #3593AB;
+        background: #EAFBFF;
     }
 
     .state--retarded {
@@ -747,9 +779,10 @@
 
 <body style="font-family:Roboto Condensed ;">
     <div class="container__diary">
+
+
+
         <header class="container__header">
-
-
             <div class="header__info--course">
                 <div class="header__info--progress">
                     <svg class="progress-circle" width="80" height="80">
@@ -766,11 +799,13 @@
                     <p class="header__info-courseName">
                         PSD004 - HISTORIA Y EPISTEMOLOGIA DE LA PSICOLOGIA
                     </p>
+
+                    
                     <p>
-                        Duración: 17 semanas - 96
-                        horas de dedicación (4 créditos académicos)
+                       <b>Duración:</b> 17 semanas - <span>96
+                        horas de dedicación</span>  (4 créditos académicos)
                     </p>
-                    <p>Docente tutor: Leandra Edna Peña Aguirre</p>
+                    <p><b>Docente tutor:</b> Leandra Edna Peña Aguirre</p>
                 </div>
             </div>
 
@@ -798,24 +833,28 @@
         </header>
 
 
+
+
+
         <div class="diaryContainer">
-
-
-
 
             <section class="container__section">
 
                 <div class="section__unit">
-                    <p class="section__unit--title">Unidad #1 Antecedentes Históricos <span
-                            class="section__unit--fecha">Disponible a partir de 29 de enero</span></p>
+
+                    <span style="font-size: 25px; color: #4C4C4C;">Módulo 1</span>
+                    <p class="section__unit--title">
+                        Introducción al curso.
+                        <span class="section__unit--fecha">Disponible a partir de 29 de enero</span>
+                    </p>
                 </div>
 
 
                 <div class="section__activity">
                     <!-- Actividad #1 Calificada Nota Aprobada-->
-                    <div class="diaryActivity activity--qualified" onclick="toggleInfo(event, this)">
+                    <div class="diaryActivity activity__qualified--approved" onclick="toggleInfo(event, this)">
 
-                        <div class="activity__border-text weighing--qualified">
+                        <div class="activity__border-text weighing__qualified--approved">
                             <span class="border__span--porcent">10%</span>
                             <span class="border__span--text">ponderado</span>
                         </div>
@@ -834,8 +873,8 @@
 
                                     <div class="activity__name--text">
                                         Taller de la Unidad 1
-                                        <span class="activity__name--span activity__span--qualified">
-                                            Ya recibiste feedback
+                                        <span class="activity__name--span activity__span--approved">
+                                            Calificación aprobada
                                         </span>
                                     </div>
                                 </div>
@@ -877,8 +916,7 @@
                             <!-- Icon arrow up-down -->
                             <div class="activity__content--icon">
                                 <div class="container__icons--showMore">
-                                    <div><i class="fa-solid fa-angle-up"></i></div>
-                                    <div><i class="fa-solid fa-angle-down"></i></div>
+                                    <i class="fa-solid fa-angles-down"></i>
                                 </div>
 
                                 <div class="container__showMore--mobile"><span>Ver Mas</span>
@@ -892,7 +930,8 @@
                             <div class="diaryActivity__info--container">
 
                                 <div class="detailed__info--text">
-                                    <div class="diaryActivity__weighting--detailed detailedWeighting--qualified">
+                                    <div
+                                        class="diaryActivity__weighting--detailed detailedWeighting__qualified--approved">
                                         Ponderación <span>10%</span>
                                     </div>
 
@@ -992,8 +1031,7 @@
                             <!-- Icon arrow up-down -->
                             <div class="activity__content--icon">
                                 <div class="container__icons--showMore">
-                                    <div><i class="fa-solid fa-angle-up"></i></div>
-                                    <div><i class="fa-solid fa-angle-down"></i></div>
+                                    <i class="fa-solid fa-angles-down"></i>
                                 </div>
 
                                 <div class="container__showMore--mobile"><span>Ver Mas</span>
@@ -1107,8 +1145,7 @@
                             <!-- Icon arrow up-down -->
                             <div class="activity__content--icon">
                                 <div class="container__icons--showMore">
-                                    <div><i class="fa-solid fa-angle-up"></i></div>
-                                    <div><i class="fa-solid fa-angle-down"></i></div>
+                                    <i class="fa-solid fa-angles-down"></i>
                                 </div>
 
                                 <div class="container__showMore--mobile"><span>Ver Mas</span>
@@ -1162,15 +1199,21 @@
             <section class="container__section">
 
                 <div class="section__unit">
-                    <p class="section__unit--title">Unidad #1 Antecedentes Históricos <span
-                            class="section__unit--fecha">Disponible a partir de 29 de enero</span></p>
+
+                    <span style="font-size: 25px; color: #4C4C4C;">Módulo 2</span>
+                    <p class="section__unit--title">
+
+
+                        La psicología explicativa griega, Edad oscura, de bronce y clásica.
+                        <span class="section__unit--fecha">Disponible a partir de 29 de enero</span>
+                    </p>
                 </div>
                 <div class="section__activity">
 
                     <!-- Actividad #1 Calificada Nota Reprobada-->
-                    <div class="diaryActivity activity--qualified" onclick="toggleInfo(event, this)">
+                    <div class="diaryActivity activity__qualified--failed" onclick="toggleInfo(event, this)">
 
-                        <div class="activity__border-text weighing--qualified">
+                        <div class="activity__border-text weighing__qualified--failed">
                             <span class="border__span--porcent">10%</span>
                             <span class="border__span--text">ponderado</span>
                         </div>
@@ -1182,15 +1225,16 @@
                                 <div class="activity__name">
 
                                     <div class="name__content--icon">
+                                        <i class="fa-regular fa-file-excel activity__name--icon icon__qualified--failed"></i>
 
-                                        <i
-                                            class="fa-solid fa-triangle-exclamation activity__name--icon icon__qualified--failed"></i>
+                                        <!-- <i class="fa-regular fa-bell activity__name--icon icon__qualified--failed"></i> -->
+
                                     </div>
 
                                     <div class="activity__name--text">
                                         Taller de la Unidad 1
-                                        <span class="activity__name--span activity__span--qualified">
-                                            Ya recibiste feedback
+                                        <span class="activity__name--span activity__span--failed">
+                                            Calificación reprobada
                                         </span>
                                     </div>
                                 </div>
@@ -1235,8 +1279,7 @@
                             <!-- Icon arrow up-down -->
                             <div class="activity__content--icon">
                                 <div class="container__icons--showMore">
-                                    <div><i class="fa-solid fa-angle-up"></i></div>
-                                    <div><i class="fa-solid fa-angle-down"></i></div>
+                                    <i class="fa-solid fa-angles-down"></i>
                                 </div>
 
                                 <div class="container__showMore--mobile"><span>Ver Mas</span>
@@ -1250,7 +1293,8 @@
                             <div class="diaryActivity__info--container">
 
                                 <div class="detailed__info--text">
-                                    <div class="diaryActivity__weighting--detailed detailedWeighting--qualified">
+                                    <div
+                                        class="diaryActivity__weighting--detailed detailedWeighting__qualified--failed">
                                         Ponderación <span>10%</span>
                                     </div>
 
@@ -1283,6 +1327,117 @@
 
 
 
+                    <!-- Actividad #2 Entregada-->
+
+                    <div class="diaryActivity activity--delivered" onclick="toggleInfo(event, this)">
+
+                        <div class="activity__border-text weighing--delivered">
+                            <span class="border__span--porcent">10%</span>
+                            <span class="border__span--text">ponderado</span>
+                        </div>
+
+                        <div class="activity__content">
+                            <!-- Nombre de la actividad -->
+                            <div class="activity__content--name">
+                                <div class="activity__name">
+                                    <div class="name__content--icon">
+                                        <i
+                                            class="fa-regular fa-pen-to-square activity__name--icon activity__icon--delivered activity__icon--pending"></i>
+
+                                    </div>
+                                    <div class="activity__name--text">
+                                        Sed ut perspiciatis unde miste...
+                                        <span class="block text-sm text-[#6D6F6D]">
+
+                                            <div class="activity__name--span span--delivered span--pending">
+                                                Pendiente por calificación 
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin Nombre de la actividad -->
+
+
+
+                            <!-- Calificación o estado Movil -->
+                            <div class="activity__state--mobile">
+                                <div>
+                                    <div class="activity__state state--delivered">
+                                        Entregada
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Calificación o estado Movil -->
+
+
+                            <!-- Fechas -->
+                            <div class="activity__content--date">
+                                <p class="date__content--text">
+                                    Disponible desde <span class="date__content--span">abril 2 hasta agosto 15 </span>
+                                </p>
+                            </div>
+                            <!-- Fin fechas -->
+
+
+                            <!-- Calificacón o estado -->
+                            <div class="activity__content--state">
+                                <div>
+                                    <div class="activity__state state--delivered">
+                                        Entregada
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Icon arrow up-down -->
+                            <div class="activity__content--icon">
+                                <div class="container__icons--showMore">
+                                    <i class="fa-solid fa-angles-down"></i>
+                                </div>
+
+                                <div class="container__showMore--mobile"><span>Ver Mas</span>
+                                    <span><i class="fa-solid fa-angle-down"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Info detallada de la actividad -->
+                        <div class="diaryActivity-info">
+                            <div class="diaryActivity__info--container">
+
+                                <div class="detailed__info--text">
+                                    <div class="diaryActivity__weighting--detailed detailedWeighting--delivered">
+                                        Ponderación <span>10%</span>
+                                    </div>
+
+                                    <div class="detailed__completion-lists">
+                                        <span>Estado de finalización:</span>
+                                        <div>
+                                            <li>
+                                                El estudiante debe ver esta actividad para finalizarla</li>
+                                            <li>
+                                                El estudiante debe entregar esta actividad para completarla</li>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="detailed__info--btn">
+                                    <a href="https://virtual.ucatolicaluisamigo.edu.co/campus/mod/assign/view.php?id=739505"
+                                        target="_blank">
+                                        <div class="detailed__info--icon">
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </div>
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fin de Actividad #2 -->
                     <!-- Actividad #2 Pendiente-->
 
                     <div class="diaryActivity activity--pending" onclick="toggleInfo(event, this)">
@@ -1346,8 +1501,7 @@
                             <!-- Icon arrow up-down -->
                             <div class="activity__content--icon">
                                 <div class="container__icons--showMore">
-                                    <div><i class="fa-solid fa-angle-up"></i></div>
-                                    <div><i class="fa-solid fa-angle-down"></i></div>
+                                    <i class="fa-solid fa-angles-down"></i>
                                 </div>
 
                                 <div class="container__showMore--mobile"><span>Ver Mas</span>
@@ -1460,8 +1614,7 @@
                             <!-- Icon arrow up-down -->
                             <div class="activity__content--icon">
                                 <div class="container__icons--showMore">
-                                    <div><i class="fa-solid fa-angle-up"></i></div>
-                                    <div><i class="fa-solid fa-angle-down"></i></div>
+                                    <i class="fa-solid fa-angles-down"></i>
                                 </div>
 
                                 <div class="container__showMore--mobile"><span>Ver Mas</span>
@@ -1497,9 +1650,7 @@
                                         </div>
 
                                     </a>
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -1507,30 +1658,33 @@
 
                 </div>
             </section>
-
-
-
-
-
         </div>
     </div>
     <script>
+
+        //Dropdowm actividad
+
         function toggleInfo(event, diaryActivity) {
             const info = diaryActivity.querySelector('.diaryActivity-info');
             const hoverInfo = diaryActivity.querySelector('.activity__border-text');
             const hoverContent = diaryActivity.querySelector('.activity__content');
+            const icon = diaryActivity.querySelector('.container__icons--showMore i');
+
             if (diaryActivity.classList.contains('active')) {
                 diaryActivity.classList.remove('active');
                 info.style.height = '0';
                 hoverInfo.style.display = 'flex'; // Muestra el hover-info nuevamente
                 hoverContent.style.padding = '';
+                icon.classList.remove('fa-angles-up');
+                icon.classList.add('fa-angles-down');
             } else {
                 closeAllDiaryActivities(); // Cierra todas las otras diary activities
                 diaryActivity.classList.add('active');
-
                 info.style.height = info.scrollHeight + 'px';
                 hoverContent.style.padding = '0';
                 hoverInfo.style.display = 'none'; // Oculta el hover-info
+                icon.classList.remove('fa-angles-down');
+                icon.classList.add('fa-angles-up');
             }
             event.stopPropagation(); // Evita que el clic se propague al document
         }
@@ -1541,17 +1695,23 @@
                 const info = diaryActivity.querySelector('.diaryActivity-info');
                 const hoverInfo = diaryActivity.querySelector('.activity__border-text');
                 const hoverContent = diaryActivity.querySelector('.activity__content');
+                const icon = diaryActivity.querySelector('.container__icons--showMore i');
+
                 diaryActivity.classList.remove('no-hover');
                 diaryActivity.classList.remove('active');
                 info.style.height = '0';
                 hoverContent.style.padding = '';
                 hoverInfo.style.display = 'flex'; // Asegura que el hover-info esté visible
+                icon.classList.remove('fa-angles-up');
+                icon.classList.add('fa-angles-down');
             });
         }
 
         document.addEventListener('click', (event) => {
             const isClickInsideDiaryActivity = event.target.closest('.diaryActivity');
-            if (!isClickInsideDiaryActivity) {
+            if (isClickInsideDiaryActivity) {
+                toggleInfo(event, isClickInsideDiaryActivity);
+            } else {
                 closeAllDiaryActivities();
             }
         });
@@ -1559,6 +1719,10 @@
 
 
 
+
+
+
+        //Porcentaje de avance
         // Definir la variable porcent
         let porcent = 78;
 
