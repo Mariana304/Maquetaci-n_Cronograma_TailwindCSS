@@ -247,7 +247,8 @@
     }
 
 
-    .diaryActivity__weighting--detailed {
+    .diaryActivity__weighting--detailed,
+    .detailed__grading--method {
         font-size: 0.94rem;
         border-radius: 0.25rem;
         width: 110px;
@@ -256,6 +257,15 @@
         color: #FFFFFF;
         text-align: center;
         box-shadow: 0px 1px 5px rgb(240, 240, 240);
+    }
+
+    .detailed__grading--method {
+        width: 160px;
+        max-width: 160px;
+        border: solid #545454 0.5px;
+        color: #545454;
+        margin-left: 10px;
+
     }
 
     .diaryActivity__weighting--detailed span {
@@ -561,7 +571,6 @@
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         align-items: center;
-        border: solid red 0.3px;
     }
 
     .detailed__info--btn {
@@ -572,21 +581,49 @@
         align-items: center;
         font-size: 17px;
         color: #2C2C2C;
-        border: solid rgb(55, 0, 255) 0.3px;
 
     }
 
     .detailed__completion--status {
         display: grid;
         grid-column: span 6 / span 6;
-        border: solid rgb(30, 255, 0) 0.3px;
+        padding-left: 35px;
     }
 
     .detailed__info--text {
         display: grid;
         grid-column: span 4 / span 4;
-        border: solid rgb(30, 255, 0) 0.3px;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
     }
+
+    .detailed__info--text i {
+        font-size: 18px;
+        margin-right: 5px;
+        color: #545454;
+    }
+
+    .detailed__info--text p,
+    .detailed__icon--SeeActivity p {
+        color: #707070;
+        font-weight: 400;
+        font-size: 0.875rem;
+    }
+
+    .detailed__icon--SeeActivity {
+        text-align: center;
+        line-height: 0%;
+    }
+
+    .detailed__icon--SeeActivity:hover {
+        font-size: 20px;
+    }
+
+    .info__icon--MoreTime {
+        display: inline-block;
+        transform: rotateY(180deg)
+    }
+
 
     .detailed__completion-lists {
         margin-top: 15px;
@@ -597,13 +634,25 @@
         font-weight: 400;
     }
 
-    .detailed__completion-lists li {
-        margin-left: 20px;
-        margin-right: 0.25rem;
-        font-size: 15px;
-        font-weight: 500;
-        color: #525252;
+    .detailed__container--list span {
+        display: flex;
+        align-items: center;
     }
+
+    .detailed__container--list i {
+        margin-right: 5px;
+    }
+
+    .detailed__Iconlist--X {
+        color: #D04961;
+    }
+
+    .detailed__Iconlist--check {
+        color: #50B447;
+    }
+
+
+
 
     .detailed__info--icon {
         padding: 10px;
@@ -617,6 +666,10 @@
 
 
     @media (max-width: 1300px) {
+        .detailed__completion--status {
+            padding-left: 0px;
+        }
+
         .section__unit--title {
             font-size: 19px;
         }
@@ -711,6 +764,18 @@
 
 
     @media (max-width: 768px) {
+
+        .detailed__info--btn {
+            grid-column: span 12 / span 12;
+        }
+
+        .detailed__completion--status {
+            grid-column: span 12 / span 12;
+        }
+
+        .detailed__info--text {
+            grid-column: span 12 / span 12;
+        }
 
 
         .name__content--icon {
@@ -967,33 +1032,43 @@
                                 <div class="container__icons--showMore">
                                     <i class="fa-solid fa-angles-down"></i>
                                 </div>
-
-                                <!-- <div class="container__showMore--mobile"><span>Ver Mas</span>
-                                    <span><i class="fa-solid fa-angle-down"></i></span>
-                                </div> -->
                             </div>
                         </div>
 
                         <!-- Info detallada de la actividad -->
+
+
+
+
+
+
+
+
                         <div class="diaryActivity-info">
                             <div class="diaryActivity__info--container">
 
                                 <div class="detailed__completion--status">
-                                    <div
-                                        class="diaryActivity__weighting--detailed detailedWeighting__qualified--approved">
-                                        Ponderación <span>10%</span>
+
+                                    <div style="display: flex;">
+                                        <div
+                                            class="diaryActivity__weighting--detailed detailedWeighting__qualified--approved">
+                                            Ponderación <span>10%</span>
+                                        </div>
+                                        <div class="detailed__grading--method">
+                                            Calificación con rúbrica
+                                        </div>
                                     </div>
 
                                     <div class="detailed__completion-lists">
-                                        <span>Estado de finalización:</span>
-                                        <div>
+                                        <span><b>Estado de finalización:</b></span>
+                                        <div class="detailed__container--list">
 
-                                            <span style="display: flex; align-items: center;">
-                                                <i class="fa-solid fa-xmark" style="color: #D04961; margin-right: 5px;"></i>
+                                            <span>
+                                                <i class="fa-solid fa-xmark detailed__Iconlist--X"></i>
                                                 El estudiante debe ver esta actividad para finalizarla</span>
 
-                                            <span style="display: flex; align-items: center;"> 
-                                                <i class="fa-solid fa-check" style="color:#50B447; margin-right: 5px;"></i>
+                                            <span>
+                                                <i class="fa-solid fa-check detailed__Iconlist--check"></i>
                                                 El estudiante debe entregar esta actividad para completarla</span>
                                         </div>
                                     </div>
@@ -1004,12 +1079,11 @@
                                     <div style="display: flex; align-items: center;">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                         <p>
-                                            Recibiste retroalimentación el <b>14 de junio de 2024</b>
+                                            Recibiste retroalimentación el <b>14 de junio de 2024</b>                          
                                         </p>
                                     </div>
                                     <div style="display: flex; align-items: center;">
-                                        <i class="fa-solid fa-clock-rotate-left"
-                                            style="display: inline-block; transform: rotateY(180deg)"></i>
+                                        <i class="fa-solid fa-clock-rotate-left info__icon--MoreTime"></i>
                                         <p>
                                             La actividad tuvo una ampliación de plazo de <b>3 días</b>
                                         </p>
@@ -1021,7 +1095,12 @@
                                     <a href="https://virtual.ucatolicaluisamigo.edu.co/campus/mod/assign/view.php?id=739505"
                                         target="_blank">
                                         <div class="detailed__info--icon">
-                                            <i class="fa-solid fa-arrow-right"></i>
+
+                                            <div class="detailed__icon--SeeActivity"
+                                                style="text-align: center; line-height: 0%;">
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                <p>Ver tarea</p>
+                                            </div>
                                         </div>
                                     </a>
                                 </div>
