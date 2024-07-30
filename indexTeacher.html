@@ -1,11 +1,1162 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mi agenda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="/CSS/styleStudent.css">
 </head>
-<body>
-    
+
+
+<body style="font-family:Roboto Condensed ;">
+    <div class="container__agenda">
+        <header class="container__header">
+            <div class="header__info--course">
+                <div class="header__info--progress">
+                    <svg class="progress-circle" width="80" height="80">
+                        <circle cx="40" cy="40" r="35" stroke="#E6E6E6" stroke-width="8" fill="none"></circle>
+                        <circle id="progress-indicator" cx="40" cy="40" r="35" stroke="#4caf50" stroke-width="8"
+                            fill="none" stroke-dasharray="219.91" stroke-dashoffset="219.91" stroke-linecap="round">
+                        </circle>
+                    </svg>
+                    <span id="progress-text">0%</span>
+                </div>
+
+
+                <div class="header__info--text">
+                    <p class="header__info-courseName">
+                        PSD004 - HISTORIA Y EPISTEMOLOGIA DE LA PSICOLOGIA
+                    </p>
+                    <p>
+                        <b>Duración:</b> 17 semanas - <b>96
+                            horas de dedicación</b> (4 créditos académicos)
+                    </p>
+                    <p><b>Docente tutor:</b> Leandra Edna Peña Aguirre</p>
+                </div>
+            </div>
+
+            <div class="header__info--date">
+                <div>
+                    <p>
+                        <span>Inicia:</span> 29 de abril
+                    </p>
+                    <p>
+                        <span>Finaliza:</span> 29 de octubre
+                    </p>
+                </div>
+
+                <div class="header__info--progressMobile">
+                    <svg class="progress-circle" width="80" height="80">
+                        <circle cx="40" cy="40" r="35" stroke="#E6E6E6" stroke-width="8" fill="none"></circle>
+                        <circle id="progress-indicator-mobile" cx="40" cy="40" r="35" stroke="#4caf50" stroke-width="8"
+                            fill="none" stroke-dasharray="219.91" stroke-dashoffset="219.91" stroke-linecap="round">
+                        </circle>
+                    </svg>
+                    <span id="progress-text-mobile">0%</span>
+                </div>
+
+            </div>
+        </header>
+
+
+
+        <div class="agendaContent">
+            <section class="container__section">
+                <div class="section__unit">
+                    <div class="unit__content--text">
+                        <span class="container__moudle--title">
+                            <p class="section__unit--moudle">Módulo 1: </p>
+                            <p class="section__unit--title"> Introduccion al curso</p>
+                        </span>
+                        <p class="section__unit--date">Disponible a partir del 29 de abril</p>
+                    </div>
+
+                </div>
+
+                <div class="section__activity">
+                    <!-- Actividad #1 Calificada Nota Aprobada-->
+                    <div class="agendaActivity activity__qualified--approved" onclick="toggleInfo(event, this)">
+
+                        <div class="activity__border-text weighing__qualified--approved">
+                            <span class="border__span--porcent">10%</span>
+                            <span class="border__span--text">ponderado</span>
+                        </div>
+
+                        <div class="activity__content">
+                            <!-- Nombre de la actividad -->
+                            <div class="activity__content--name">
+
+
+                                <div class="activity__name">
+
+                                    <div class="name__content--icon">
+                                        <i
+                                            class="fa-regular fa-circle-check activity__name--icon icon__qualified--approved"></i>
+                                    </div>
+
+                                    <div class="activity__name--text">
+                                        Foro de la Unidad 1
+                                        <span class="activity__name--span activity__span--approved">
+                                            Actividad calificada
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin Nombre de la actividad -->
+
+                            <!-- Calificación o estado Movil -->
+                            <div class="activity__state--mobile">
+                                <div>
+                                    <div class="activity__state teacher__state--qualified">
+                                        Calificada
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Calificación o estado Movil -->
+
+
+                            <!-- Fechas -->
+                            <div class="activity__content--date">
+                                <p class="date__content--text">
+                                    Disponible de <span class="date__content--span">septiembre 2 a noviembre 15</span>
+                                </p>
+                            </div>
+                            <!-- Fin fechas -->
+
+
+                            <!-- Calificación o estado -->
+                            <div class="activity__content--state">
+                                <div>
+                                    <div class="activity__state teacher__state--qualified">
+                                        Calificada
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin Calificación o estado -->
+
+                            <!-- Icon arrow up-down -->
+                            <div class="activity__content--icon">
+                                <div class="container__icons--showMore">
+                                    <i class="fa-solid fa-angles-down"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info detallada de la actividad -->
+
+
+                        <div class="agendaActivity-info">
+                            <div class="agendaActivity__info--container">
+
+                                <div class="detailed__completion--status">
+                                    <div class="detailed__Weighting--gradingMethod">
+                                        <div
+                                            class="agendaActivity__weighting--detailed detailedWeighting__qualified--approved">
+                                            Ponderación <span>10%</span>
+                                        </div>
+                                        <div class="detailed__grading--method">
+                                            Calificación con rúbrica
+                                        </div>
+                                    </div>
+
+                                    <div class="detailed__completion-lists">
+                                        <span><b>Estado de finalización:</b></span>
+                                        <div class="detailed__container--list">
+
+                                            <span>
+                                                <i class="fa-solid fa-check detailed__Iconlist--check"></i>
+                                                El estudiante debe ver esta actividad para finalizarla</span>
+
+                                            <span>
+                                                <i class="fa-solid fa-check detailed__Iconlist--check"></i>
+                                                El estudiante debe entregar esta actividad para completarla</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--text">
+                                    <div class="detailed__content--info">
+                                        <i class="fa-solid fa-users"></i>
+                                        <p>
+                                            <b>15 estudiantes</b> han entregado
+                                        </p>
+                                    </div>
+                                    <div class="detailed__content--info">
+                                        <i class="fa-solid fa-clock-rotate-left info__icon--MoreTime"></i>
+                                        <p>
+                                            Esta actividad tiene una excepción de grupo
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--btn">
+                                    <a href="https://virtual.ucatolicaluisamigo.edu.co/campus/mod/assign/view.php?id=739505"
+                                        target="_blank">
+                                        <div class="detailed__info--icon">
+
+                                            <div class="detailed__icon--SeeActivity">
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                <p>Ver tarea</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin de Actividad #1 -->
+
+                    <!-- Actividad #2  retrasada -->
+                    <div class="agendaActivity activity--retarded" onclick="toggleInfo(event, this)">
+
+                        <div class="activity__border-text weighing--retarded">
+                            <span class="border__span--porcent">10%</span>
+                            <span class="border__span--text">ponderado</span>
+                        </div>
+
+                        <div class="activity__content">
+                            <!-- Nombre de la actividad -->
+                            <div class="activity__content--name">
+                                <div class="activity__name">
+                                    <div class="name__content--icon">
+                                        <!-- <i class="fa-solid fa-user-check activity__name--icon"></i> -->
+                                        <i
+                                            class="fa-solid fa-clock-rotate-left activity__name--icon activity__icon--retarded"></i>
+                                    </div>
+                                    <div class="activity__name--text">
+                                        Cuestionario 1 de la unidad 1
+                                        <span class="block text-sm text-[#6D6F6D]">
+
+                                            <div class="activity__name--span span--retarded">
+                                                Venció hace 10 días
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin Nombre de la actividad -->
+
+                            <!-- Calificación o estado Movil -->
+                            <div class="activity__state--mobile">
+                                <div>
+                                    <div class="activity__state state--retarded">
+                                        Sin calificar
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Calificación o estado Movil -->
+
+                            <!-- Fechas -->
+                            <div class="activity__content--date">
+
+                                <p class="date__content--text">
+                                    El plazo venció el<span class="date__content--span"> 15 de marzo de 2024</span></p>
+                            </div>
+                            <!-- Fin fechas -->
+
+
+                            <!-- Calificacón o estado -->
+                            <div class="activity__content--state">
+                                <div>
+                                    <div class="activity__state state--retarded">
+                                        Sin calificar
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Icon arrow up-down -->
+                            <div class="activity__content--icon">
+                                <div class="container__icons--showMore">
+                                    <i class="fa-solid fa-angles-down"></i>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- Info detallada de la actividad -->
+
+                        <div class="agendaActivity-info">
+                            <div class="agendaActivity__info--container">
+
+                                <div class="detailed__completion--status">
+
+                                    <div class="detailed__Weighting--gradingMethod" style="display: flex;">
+                                        <div class="agendaActivity__weighting--detailed detailedWeighting--retarded">
+                                            Ponderación <span>10%</span>
+                                        </div>
+                                        <div class="detailed__grading--method">
+                                            Calificación con rúbrica
+                                        </div>
+                                    </div>
+
+                                    <div class="detailed__completion-lists">
+                                        <span><b>Estado de finalización:</b></span>
+                                        <div class="detailed__container--list">
+                                            <span>
+                                                <i class="fa-solid fa-check detailed__Iconlist--check"></i>
+                                                El estudiante debe ver esta actividad para finalizarla</span>
+
+                                            <span>
+                                                <i class="fa-solid fa-xmark detailed__Iconlist--X"></i>
+                                                El estudiante debe entregar esta actividad para completarla</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--text">
+                                    <div class="detailed__content--info">
+                                        <i class="fa-solid fa-users"></i>
+                                        <p>
+                                            <b>15 estudiantes</b> han entregado
+                                        </p>
+                                    </div>
+                                    <div class="detailed__content--info">
+                                        <i class="fa-solid fa-clock-rotate-left info__icon--MoreTime"></i>
+                                        <p>
+                                            Esta actividad tiene una excepción de grupo
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--btn">
+                                    <a href="https://virtual.ucatolicaluisamigo.edu.co/campus/mod/assign/view.php?id=739505"
+                                        target="_blank">
+                                        <div class="detailed__info--icon">
+
+                                            <div class="detailed__icon--SeeActivity">
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                <p>Ver tarea</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin de Actividad #2 -->
+
+                </div>
+            </section>
+
+
+            <section class="container__section">
+
+                <div class="section__unit">
+                    <div class="unit__content--text">
+                        <span class="container__moudle--title">
+                            <p class="section__unit--moudle">Módulo 2: </p>
+                            <p class="section__unit--title"> La psicología explicativa griega, Edad oscura, de bronce y
+                                clásica.</p>
+                        </span>
+                        <p class="section__unit--date">Disponible a partir del 29 de mayo</p>
+                    </div>
+
+                </div>
+
+                <div class="section__activity">
+
+
+
+                    <!-- Actividad #1 Entregada-->
+                    <div class="agendaActivity activity--delivered" onclick="toggleInfo(event, this)">
+
+                        <div class="activity__border-text weighing--delivered">
+                            <span class="border__span--porcent">10%</span>
+                            <span class="border__span--text">ponderado</span>
+                        </div>
+
+                        <div class="activity__content">
+                            <!-- Nombre de la actividad -->
+                            <div class="activity__content--name">
+                                <div class="activity__name">
+                                    <div class="name__content--icon">
+                                        <i
+                                            class="fa-regular fa-pen-to-square activity__name--icon activity__icon--delivered"></i>
+
+                                    </div>
+                                    <div class="activity__name--text">
+                                        Foro 1 de la unidad 2
+                                        <span class="block text-sm text-[#6D6F6D]">
+
+                                            <div class="activity__name--span span--delivered">
+                                                Entrega en proceso
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin Nombre de la actividad -->
+
+
+
+                            <!-- Calificación o estado Movil -->
+                            <div class="activity__state--mobile">
+                                <div>
+                                    <div class="activity__state state--delivered">
+                                        Entregada
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Calificación o estado Movil -->
+
+                            <!-- Fechas -->
+                            <div class="activity__content--date">
+                                <p class="date__content--text">
+                                    Disponible de <span class="date__content--span">septiembre 2 a noviembre 15 </span>
+                                </p>
+                            </div>
+                            <!-- Fin fechas -->
+
+
+                            <!-- Calificacón o estado -->
+                            <div class="activity__content--state">
+                                <div>
+                                    <div class="activity__state state--delivered">
+                                        En proceso
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Icon arrow up-down -->
+                            <div class="activity__content--icon">
+                                <div class="container__icons--showMore">
+                                    <i class="fa-solid fa-angles-down"></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Info detallada de la actividad -->
+
+                        <div class="agendaActivity-info">
+                            <div class="agendaActivity__info--container">
+
+                                <div class="detailed__completion--status">
+
+                                    <div class="detailed__Weighting--gradingMethod" style="display: flex;">
+                                        <div class="agendaActivity__weighting--detailed detailedWeighting--delivered">
+                                            Ponderación <span>10%</span>
+                                        </div>
+                                        <div class="detailed__grading--method">
+                                            Calificación con rúbrica
+                                        </div>
+                                    </div>
+
+                                    <div class="detailed__completion-lists">
+                                        <span><b>Estado de finalización:</b></span>
+                                        <div class="detailed__container--list">
+
+                                            <span>
+                                                <i class="fa-solid fa-check detailed__Iconlist--check"></i>
+                                                El estudiante debe ver esta actividad para finalizarla</span>
+
+                                            <span>
+                                                <i class="fa-solid fa-check detailed__Iconlist--check"></i>
+                                                El estudiante debe entregar esta actividad para completarla</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--text">
+                                    <div class="detailed__content--info">
+                                        <i class="fa-solid fa-users"></i>
+                                        <p>
+                                            <b>15 estudiantes</b> han entregado
+                                        </p>
+                                    </div>
+                                    <div class="detailed__content--info">
+                                        <i class="fa-solid fa-clock-rotate-left info__icon--MoreTime"></i>
+                                        <p>
+                                            Esta actividad tiene una excepción de grupo
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--btn">
+                                    <a href="https://virtual.ucatolicaluisamigo.edu.co/campus/mod/assign/view.php?id=739505"
+                                        target="_blank">
+                                        <div class="detailed__info--icon">
+
+                                            <div class="detailed__icon--SeeActivity">
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                <p>Ver tarea</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin de Actividad #1 -->
+
+                    <!-- Actividad #2 Pendiente-->
+                    <div class="agendaActivity activity--pending" onclick="toggleInfo(event, this)">
+                        <div class="activity__border-text weighing--pending">
+                            <span class="border__span--porcent">10%</span>
+                            <span class="border__span--text">ponderado</span>
+                        </div>
+
+                        <div class="activity__content">
+                            <!-- Nombre de la actividad -->
+                            <div class="activity__content--name">
+                                <div class="activity__name">
+                                    <div class="name__content--icon">
+                                        <i class="fa-regular fa-clock activity__name--icon activity__icon--pending"></i>
+                                    </div>
+                                    <div class="activity__name--text">
+                                        Actividad 1 de la unidad 2
+                                        <span class="block text-sm text-[#6D6F6D]">
+
+                                            <div class="activity__name--span span--pending Countdown">
+                                                Pendiente por calificar
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin Nombre de la actividad -->
+
+
+
+                            <!-- Calificación o estado Movil -->
+                            <div class="activity__state--mobile">
+                                <div>
+                                    <div class="activity__state state--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Calificación o estado Movil -->
+
+
+                            <!-- Fechas -->
+                            <div class="activity__content--date">
+                                <p class="date__content--text">
+                                    Se debe calificar antes del <span class="date__content--span">27 de noviembre
+                                    </span>
+                                </p>
+                            </div>
+                            <!-- Fin fechas -->
+
+
+                            <!-- Calificacón o estado -->
+                            <div class="activity__content--state">
+                                <div>
+                                    <div class="activity__state state--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Icon arrow up-down -->
+                            <div class="activity__content--icon">
+                                <div class="container__icons--showMore">
+                                    <i class="fa-solid fa-angles-down"></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Info detallada de la actividad -->
+
+                        <div class="agendaActivity-info">
+                            <div class="agendaActivity__info--container">
+
+                                <div class="detailed__completion--status">
+
+                                    <div class="detailed__Weighting--gradingMethod" style="display: flex;">
+                                        <div class="agendaActivity__weighting--detailed detailedWeighting--pending">
+                                            Ponderación <span>10%</span>
+                                        </div>
+                                        <div class="detailed__grading--method">
+                                            Calificación con rúbrica
+                                        </div>
+                                    </div>
+
+                                    <div class="detailed__completion-lists">
+                                        <span><b>Estado de finalización:</b></span>
+                                        <div class="detailed__container--list">
+
+                                            <span>
+                                                <i class="fa-solid fa-xmark detailed__Iconlist--X"></i>
+                                                El estudiante debe ver esta actividad para finalizarla</span>
+
+                                            <span>
+                                                <i class="fa-solid fa-check detailed__Iconlist--check"></i>
+                                                El estudiante debe entregar esta actividad para completarla</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--text">
+                                    <div class="detailed__content--info">
+                                        <i class="fa-solid fa-users"></i>
+                                        <p>
+                                            <b>15 estudiantes</b> han entregado
+                                        </p>
+                                    </div>
+                                    <div class="detailed__content--info">
+                                        <i class="fa-solid fa-clock-rotate-left info__icon--MoreTime"></i>
+                                        <p>
+                                            Esta actividad tiene una excepción de grupo
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--btn">
+                                    <a href="https://virtual.ucatolicaluisamigo.edu.co/campus/mod/assign/view.php?id=739505"
+                                        target="_blank">
+                                        <div class="detailed__info--icon">
+
+                                            <div class="detailed__icon--SeeActivity">
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                <p>Ver tarea</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin de Actividad #2 -->
+
+                    <!-- Actividad #4 Bloqueada -->
+                    <div class="agendaActivity activity--blocked" onclick="toggleInfo(event, this)">
+
+                        <div class="activity__border-text weighing--blocked">
+                            <span class="border__span--porcent">10%</span>
+                            <span class="border__span--text">ponderado</span>
+                        </div>
+
+                        <div class="activity__content">
+                            <!-- Nombre de la actividad -->
+                            <div class="activity__content--name">
+                                <div class="activity__name">
+                                    <div class="name__content--icon">
+                                        <!-- <i class="fa-solid fa-user-check activity__name--icon"></i> -->
+
+
+                                        <i class="fa-solid fa-lock activity__name--icon activity__icon--blocked"></i>
+                                    </div>
+                                    <div class="activity__name--text">
+                                        Taller 1 de la unidad 2
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin Nombre de la actividad -->
+
+
+                            <!-- Calificación o estado Movil -->
+                            <div class="activity__state--mobile">
+                                <div>
+                                    <div class="activity__state state--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Calificación o estado Movil -->
+
+                            <!-- Fechas -->
+                            <div class="activity__content--date">
+                                <p class="date__content--text">
+                                    Disponible desde <span class="date__content--span">Junio 20 hasta julio 2 </span>
+                                </p>
+                            </div>
+                            <!-- Fin fechas -->
+
+
+                            <!-- Calificacón o estado -->
+                            <div class="activity__content--state">
+                                <div>
+                                    <div class="activity__state state--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Icon arrow up-down -->
+                            <div class="activity__content--icon">
+                                <div class="container__icons--showMore">
+                                    <i class="fa-solid fa-angles-down"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info detallada de la actividad -->
+
+                        <div class="agendaActivity-info">
+                            <div class="agendaActivity__info--container">
+
+                                <div class="detailed__completion--status">
+
+                                    <div class="detailed__Weighting--gradingMethod" style="display: flex;">
+                                        <div class="agendaActivity__weighting--detailed detailedWeighting--blocked">
+                                            Ponderación <span>10%</span>
+                                        </div>
+                                        <div class="detailed__grading--method">
+                                            Calificación con rúbrica
+                                        </div>
+                                    </div>
+
+                                    <div class="detailed__completion-lists">
+                                        <span><b>Condición para desbloqueo:</b></span>
+                                        <div class="detailed__container--list">
+
+                                            <span>
+                                                <i class="fa-solid fa-xmark detailed__Iconlist--X"></i>
+                                                Consiga la puntuación requerida en Lección 1 - Generalidades de la
+                                                investigación cualitativa</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--text">
+                                    <div class="detailed__content--info">
+                                        <i class="fa-solid fa-users"></i>
+                                        <p>
+                                            <b>15 estudiantes</b> han entregado
+                                        </p>
+                                    </div>
+                                    <div class="detailed__content--info">
+                                        <i class="fa-solid fa-clock-rotate-left info__icon--MoreTime"></i>
+                                        <p>
+                                            Esta actividad tiene una excepción de grupo
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--btn">
+                                    <a href="https://virtual.ucatolicaluisamigo.edu.co/campus/mod/assign/view.php?id=739505"
+                                        target="_blank">
+                                        <div class="detailed__info--icon">
+
+                                            <div class="detailed__icon--SeeActivity">
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                <p>Ver tarea</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin de Actividad #4 -->
+
+                </div>
+            </section>
+
+
+
+
+            <div class="conditions__unlock">
+                <p><b>Condición para desbloqueo:</b>
+                <ul>
+                    <li>En esta fecha 27 de febrero de 2024 o después</li>
+                    <li>La actividad <u>Cuestionario Unidad 1 - Valoración de avance</u> debe estar marcada como
+                        completada.
+                    </li>
+                </ul>
+            </div>
+
+            </p>
+
+            <section class="container__section section--bloqued">
+
+                <div class="section__unit  unit--bloqued">
+                    <div class="unit__content--text">
+                        <span class="container__moudle--title">
+                            <p class="section__unit--moudle">Módulo 3: </p>
+                            <p class="section__unit--title"> La psicología ascética en la edad media</p>
+                        </span>
+                        <p class="section__unit--date">Disponible a partir del 30 de junio</p>
+                    </div>
+
+                </div>
+
+
+                <div class="section__activity">
+                    <!-- Actividad #1 Bloqueada -->
+                    <div class="agendaActivity activity--blocked" onclick="toggleInfo(event, this)">
+
+                        <div class="activity__border-text weighing--blocked">
+                            <span class="border__span--porcent">10%</span>
+                            <span class="border__span--text">ponderado</span>
+                        </div>
+
+                        <div class="activity__content">
+                            <!-- Nombre de la actividad -->
+                            <div class="activity__content--name">
+                                <div class="activity__name">
+                                    <div class="name__content--icon">
+                                        <!-- <i class="fa-solid fa-user-check activity__name--icon"></i> -->
+
+
+                                        <i class="fa-regular fa-clock activity__name--icon activity__icon--blocked"></i>
+
+                                    </div>
+                                    <div class="activity__name--text">
+                                        Foro de 1 de la unidad 3
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin Nombre de la actividad -->
+
+
+                            <!-- Calificación o estado Movil -->
+                            <div class="activity__state--mobile">
+                                <div>
+                                    <div class="activity__state state__blocked--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Calificación o estado Movil -->
+
+                            <!-- Fechas -->
+                            <div class="activity__content--date">
+                                <p class="date__content--text">
+                                    Disponible desde <span class="date__content--span">junio 27 hasta julio 10 </span>
+                                </p>
+                            </div>
+                            <!-- Fin fechas -->
+
+
+                            <!-- Calificacón o estado -->
+                            <div class="activity__content--state">
+                                <div>
+                                    <div class="activity__state state__blocked--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Icon arrow up-down -->
+                            <div class="activity__content--icon">
+                                <div class="container__icons--showMore">
+                                    <i class="fa-solid fa-angles-down"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info detallada de la actividad -->
+                        <div class="agendaActivity-info">
+                            <div class="agendaActivity__info--container">
+
+                                <div class="detailed__completion--status">
+
+                                    <div class="detailed__Weighting--gradingMethod" style="display: flex;">
+                                        <div class="agendaActivity__weighting--detailed detailedWeighting--blocked">
+                                            Ponderación <span>10%</span>
+                                        </div>
+                                        <div class="detailed__grading--method">
+                                            Calificación con rúbrica
+                                        </div>
+                                    </div>
+
+                                    <div class="detailed__completion-lists">
+                                        <span><b>Condición para desbloqueo:</b></span>
+                                        <div class="detailed__container--list">
+
+                                            <span>
+                                                <i class="fa-solid fa-xmark detailed__Iconlist--X"></i>
+                                                Consiga la puntuación requerida en Lección 2 - Generalidades de la
+                                                investigación cualitativa</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--text">
+                                    <div class="detailed__content--info">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                        <p>
+                                            Debes recibir retroalimentación el <b>25 de julio de 2024</b>
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--btn">
+                                    <a href="https://virtual.ucatolicaluisamigo.edu.co/campus/mod/assign/view.php?id=739505"
+                                        target="_blank">
+                                        <div class="detailed__info--icon">
+
+                                            <div class="detailed__icon--SeeActivity">
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                <p>Ver tarea</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin de Actividad #1 -->
+
+                    <!-- Actividad #2 Bloqueada -->
+                    <div class="agendaActivity activity--blocked" onclick="toggleInfo(event, this)">
+
+                        <div class="activity__border-text weighing--blocked">
+                            <span class="border__span--porcent">10%</span>
+                            <span class="border__span--text">ponderado</span>
+                        </div>
+
+                        <div class="activity__content">
+                            <!-- Nombre de la actividad -->
+                            <div class="activity__content--name">
+                                <div class="activity__name">
+                                    <div class="name__content--icon">
+                                        <!-- <i class="fa-solid fa-user-check activity__name--icon"></i> -->
+
+
+                                        <i class="fa-regular fa-clock activity__name--icon activity__icon--blocked"></i>
+
+                                    </div>
+                                    <div class="activity__name--text">
+                                        Taller 1 de la unidad 3
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin Nombre de la actividad -->
+
+
+                            <!-- Calificación o estado Movil -->
+                            <div class="activity__state--mobile">
+                                <div>
+                                    <div class="activity__state state__blocked--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Calificación o estado Movil -->
+
+                            <!-- Fechas -->
+                            <div class="activity__content--date">
+                                <p class="date__content--text">
+                                    Disponible desde <span class="date__content--span">julio 2 hasta julio 15 </span>
+                                </p>
+                            </div>
+                            <!-- Fin fechas -->
+
+
+                            <!-- Calificacón o estado -->
+                            <div class="activity__content--state">
+                                <div>
+                                    <div class="activity__state state__blocked--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Icon arrow up-down -->
+                            <div class="activity__content--icon">
+                                <div class="container__icons--showMore">
+                                    <i class="fa-solid fa-angles-down"></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Info detallada de la actividad -->
+                        <div class="agendaActivity-info">
+                            <div class="agendaActivity__info--container">
+
+                                <div class="detailed__completion--status">
+
+                                    <div class="detailed__Weighting--gradingMethod" style="display: flex;">
+                                        <div class="agendaActivity__weighting--detailed detailedWeighting--blocked">
+                                            Ponderación <span>10%</span>
+                                        </div>
+                                        <div class="detailed__grading--method">
+                                            Calificación con rúbrica
+                                        </div>
+                                    </div>
+
+                                    <div class="detailed__completion-lists">
+                                        <span><b>Condición para desbloqueo:</b></span>
+                                        <div class="detailed__container--list">
+
+                                            <span>
+                                                <i class="fa-solid fa-xmark detailed__Iconlist--X"></i>
+                                                Consiga la puntuación requerida en Lección 1 - Generalidades de la
+                                                investigación cualitativa</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--text">
+                                    <div class="detailed__content--info">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                        <p>
+                                            Debes recibir retroalimentación el <b>30 de julio de 2024</b>
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--btn">
+                                    <a href="https://virtual.ucatolicaluisamigo.edu.co/campus/mod/assign/view.php?id=739505"
+                                        target="_blank">
+                                        <div class="detailed__info--icon">
+
+                                            <div class="detailed__icon--SeeActivity">
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                <p>Ver tarea</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin de Actividad #2 -->
+
+                    <!-- Actividad #3 Bloqueada -->
+                    <div class="agendaActivity activity--blocked" onclick="toggleInfo(event, this)">
+
+                        <div class="activity__border-text weighing--blocked">
+                            <span class="border__span--porcent">10%</span>
+                            <span class="border__span--text">ponderado</span>
+                        </div>
+
+                        <div class="activity__content">
+                            <!-- Nombre de la actividad -->
+                            <div class="activity__content--name">
+                                <div class="activity__name">
+                                    <div class="name__content--icon">
+                                        <!-- <i class="fa-solid fa-user-check activity__name--icon"></i> -->
+
+
+                                        <i class="fa-regular fa-clock activity__name--icon activity__icon--blocked"></i>
+
+                                    </div>
+                                    <div class="activity__name--text">
+                                        Cuestionario 1 de la unidad 3
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin Nombre de la actividad -->
+
+
+                            <!-- Calificación o estado Movil -->
+                            <div class="activity__state--mobile">
+                                <div>
+                                    <div class="activity__state state__blocked--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Calificación o estado Movil -->
+
+                            <!-- Fechas -->
+                            <div class="activity__content--date">
+                                <p class="date__content--text">
+                                    Disponible desde <span class="date__content--span">julio 15 hasta julio 15 </span>
+                                </p>
+                            </div>
+                            <!-- Fin fechas -->
+
+
+                            <!-- Calificacón o estado -->
+                            <div class="activity__content--state">
+                                <div>
+                                    <div class="activity__state state__blocked--pending">
+                                        Pendiente
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Icon arrow up-down -->
+                            <div class="activity__content--icon">
+                                <div class="container__icons--showMore">
+                                    <i class="fa-solid fa-angles-down"></i>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Info detallada de la actividad -->
+                        <div class="agendaActivity-info">
+                            <div class="agendaActivity__info--container">
+
+                                <div class="detailed__completion--status">
+
+                                    <div class="detailed__Weighting--gradingMethod" style="display: flex;">
+                                        <div class="agendaActivity__weighting--detailed detailedWeighting--blocked">
+                                            Ponderación <span>10%</span>
+                                        </div>
+                                        <div class="detailed__grading--method">
+                                            Calificación con rúbrica
+                                        </div>
+                                    </div>
+
+                                    <div class="detailed__completion-lists">
+                                        <span><b>Condición para desbloqueo:</b></span>
+                                        <div class="detailed__container--list">
+
+                                            <span>
+                                                <i class="fa-solid fa-xmark detailed__Iconlist--X"></i>
+                                                Consiga la puntuación requerida en Lección 1 - Generalidades de la
+                                                investigación cualitativa</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--text">
+                                    <div class="detailed__content--info">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                        <p>
+                                            Debes recibir retroalimentación el <b>30 de julio de 2024</b>
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                                <div class="detailed__info--btn">
+                                    <a href="https://virtual.ucatolicaluisamigo.edu.co/campus/mod/assign/view.php?id=739505"
+                                        target="_blank">
+                                        <div class="detailed__info--icon">
+
+                                            <div class="detailed__icon--SeeActivity">
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                <p>Ver tarea</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin de Actividad #3 -->
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="/JS/mainStuden.js"></script>
 </body>
+
 </html>

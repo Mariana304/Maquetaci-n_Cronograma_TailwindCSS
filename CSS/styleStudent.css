@@ -196,6 +196,8 @@
 .agendaActivity {
     display: grid;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     /* top and bottom | left and right */
     padding: 0.25rem 0.75rem;
     margin-right: 0.75rem;
@@ -574,6 +576,12 @@ a {
     background: #FFF0F3;
 }
 
+.teacher__state--qualified {
+    border: solid 1px #A2EE9B;
+    color: #50B447;
+    background: #F0FFEF;
+}
+
 .activity__state--mobile {
     display: grid;
     grid-column: span 3 / span 3;
@@ -699,6 +707,11 @@ a {
     color: #2C2C2C;
 }
 
+.detailed__content--info {
+    display: flex;
+    align-items: center;
+}
+
 
 
 
@@ -810,6 +823,11 @@ a {
 
 
 @media (max-width: 768px) {
+
+
+    .container__icons--showMore {
+        padding: 4px;
+    }
 
 
     .detailed__completion--status {
